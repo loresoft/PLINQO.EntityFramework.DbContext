@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3C043248-B883-4F7B-AE10-248D981EA655}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdventureWorks.Data</RootNamespace>
+    <AssemblyName>AdventureWorks.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.5.0.0-rc\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdventureWorksContext.cs" />
+    <Compile Include="AdventureWorksContext.Generated.cs">
+      <DependentUpon>AdventureWorksContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\Address.Generated.cs">
+      <DependentUpon>Address.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AddressType.cs" />
+    <Compile Include="Entities\AddressType.Generated.cs">
+      <DependentUpon>AddressType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AWBuildVersion.cs" />
+    <Compile Include="Entities\AWBuildVersion.Generated.cs">
+      <DependentUpon>AWBuildVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BillOfMaterials.cs" />
+    <Compile Include="Entities\BillOfMaterials.Generated.cs">
+      <DependentUpon>BillOfMaterials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Contact.cs" />
+    <Compile Include="Entities\Contact.Generated.cs">
+      <DependentUpon>Contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ContactType.cs" />
+    <Compile Include="Entities\ContactType.Generated.cs">
+      <DependentUpon>ContactType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CountryRegion.cs" />
+    <Compile Include="Entities\CountryRegion.Generated.cs">
+      <DependentUpon>CountryRegion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CreditCard.cs" />
+    <Compile Include="Entities\CreditCard.Generated.cs">
+      <DependentUpon>CreditCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Culture.cs" />
+    <Compile Include="Entities\Culture.Generated.cs">
+      <DependentUpon>Culture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Currency.cs" />
+    <Compile Include="Entities\Currency.Generated.cs">
+      <DependentUpon>Currency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CurrencyRate.cs" />
+    <Compile Include="Entities\CurrencyRate.Generated.cs">
+      <DependentUpon>CurrencyRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Customer.Generated.cs">
+      <DependentUpon>Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CustomerAddress.cs" />
+    <Compile Include="Entities\CustomerAddress.Generated.cs">
+      <DependentUpon>CustomerAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DatabaseLog.cs" />
+    <Compile Include="Entities\DatabaseLog.Generated.cs">
+      <DependentUpon>DatabaseLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Department.cs" />
+    <Compile Include="Entities\Department.Generated.cs">
+      <DependentUpon>Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Document.cs" />
+    <Compile Include="Entities\Document.Generated.cs">
+      <DependentUpon>Document.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\Employee.Generated.cs">
+      <DependentUpon>Employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmployeeDepartmentHistory.cs" />
+    <Compile Include="Entities\EmployeeDepartmentHistory.Generated.cs">
+      <DependentUpon>EmployeeDepartmentHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmployeePayHistory.cs" />
+    <Compile Include="Entities\EmployeePayHistory.Generated.cs">
+      <DependentUpon>EmployeePayHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ErrorLog.cs" />
+    <Compile Include="Entities\ErrorLog.Generated.cs">
+      <DependentUpon>ErrorLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Illustration.cs" />
+    <Compile Include="Entities\Illustration.Generated.cs">
+      <DependentUpon>Illustration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Individual.cs" />
+    <Compile Include="Entities\Individual.Generated.cs">
+      <DependentUpon>Individual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\JobCandidate.cs" />
+    <Compile Include="Entities\JobCandidate.Generated.cs">
+      <DependentUpon>JobCandidate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Location.cs" />
+    <Compile Include="Entities\Location.Generated.cs">
+      <DependentUpon>Location.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Product.Generated.cs">
+      <DependentUpon>Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductCategory.cs" />
+    <Compile Include="Entities\ProductCategory.Generated.cs">
+      <DependentUpon>ProductCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductCostHistory.cs" />
+    <Compile Include="Entities\ProductCostHistory.Generated.cs">
+      <DependentUpon>ProductCostHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductDescription.cs" />
+    <Compile Include="Entities\ProductDescription.Generated.cs">
+      <DependentUpon>ProductDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductInventory.cs" />
+    <Compile Include="Entities\ProductInventory.Generated.cs">
+      <DependentUpon>ProductInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductListPriceHistory.cs" />
+    <Compile Include="Entities\ProductListPriceHistory.Generated.cs">
+      <DependentUpon>ProductListPriceHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductModel.cs" />
+    <Compile Include="Entities\ProductModel.Generated.cs">
+      <DependentUpon>ProductModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductModelProductDescriptionCulture.cs" />
+    <Compile Include="Entities\ProductModelProductDescriptionCulture.Generated.cs">
+      <DependentUpon>ProductModelProductDescriptionCulture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductPhoto.cs" />
+    <Compile Include="Entities\ProductPhoto.Generated.cs">
+      <DependentUpon>ProductPhoto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductReview.cs" />
+    <Compile Include="Entities\ProductReview.Generated.cs">
+      <DependentUpon>ProductReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductSubcategory.cs" />
+    <Compile Include="Entities\ProductSubcategory.Generated.cs">
+      <DependentUpon>ProductSubcategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductVendor.cs" />
+    <Compile Include="Entities\ProductVendor.Generated.cs">
+      <DependentUpon>ProductVendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PurchaseOrderDetail.cs" />
+    <Compile Include="Entities\PurchaseOrderDetail.Generated.cs">
+      <DependentUpon>PurchaseOrderDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PurchaseOrderHeader.cs" />
+    <Compile Include="Entities\PurchaseOrderHeader.Generated.cs">
+      <DependentUpon>PurchaseOrderHeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SalesOrderDetail.cs" />
+    <Compile Include="Entities\SalesOrderDetail.Generated.cs">
+      <DependentUpon>SalesOrderDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SalesOrderHeader.cs" />
+    <Compile Include="Entities\SalesOrderHeader.Generated.cs">
+      <DependentUpon>SalesOrderHeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SalesPerson.cs" />
+    <Compile Include="Entities\SalesPerson.Generated.cs">
+      <DependentUpon>SalesPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SalesPersonQuotaHistory.cs" />
+    <Compile Include="Entities\SalesPersonQuotaHistory.Generated.cs">
+      <DependentUpon>SalesPersonQuotaHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SalesReason.cs" />
+    <Compile Include="Entities\SalesReason.Generated.cs">
+      <DependentUpon>SalesReason.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SalesTaxRate.cs" />
+    <Compile Include="Entities\SalesTaxRate.Generated.cs">
+      <DependentUpon>SalesTaxRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SalesTerritory.cs" />
+    <Compile Include="Entities\SalesTerritory.Generated.cs">
+      <DependentUpon>SalesTerritory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SalesTerritoryHistory.cs" />
+    <Compile Include="Entities\SalesTerritoryHistory.Generated.cs">
+      <DependentUpon>SalesTerritoryHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ScrapReason.cs" />
+    <Compile Include="Entities\ScrapReason.Generated.cs">
+      <DependentUpon>ScrapReason.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Shift.cs" />
+    <Compile Include="Entities\Shift.Generated.cs">
+      <DependentUpon>Shift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ShipMethod.cs" />
+    <Compile Include="Entities\ShipMethod.Generated.cs">
+      <DependentUpon>ShipMethod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ShoppingCartItem.cs" />
+    <Compile Include="Entities\ShoppingCartItem.Generated.cs">
+      <DependentUpon>ShoppingCartItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SpecialOffer.cs" />
+    <Compile Include="Entities\SpecialOffer.Generated.cs">
+      <DependentUpon>SpecialOffer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SpecialOfferProduct.cs" />
+    <Compile Include="Entities\SpecialOfferProduct.Generated.cs">
+      <DependentUpon>SpecialOfferProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\StateProvince.cs" />
+    <Compile Include="Entities\StateProvince.Generated.cs">
+      <DependentUpon>StateProvince.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Store.cs" />
+    <Compile Include="Entities\Store.Generated.cs">
+      <DependentUpon>Store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\StoreContact.cs" />
+    <Compile Include="Entities\StoreContact.Generated.cs">
+      <DependentUpon>StoreContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TransactionHistory.cs" />
+    <Compile Include="Entities\TransactionHistory.Generated.cs">
+      <DependentUpon>TransactionHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TransactionHistoryArchive.cs" />
+    <Compile Include="Entities\TransactionHistoryArchive.Generated.cs">
+      <DependentUpon>TransactionHistoryArchive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UnitMeasure.cs" />
+    <Compile Include="Entities\UnitMeasure.Generated.cs">
+      <DependentUpon>UnitMeasure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Vendor.cs" />
+    <Compile Include="Entities\Vendor.Generated.cs">
+      <DependentUpon>Vendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\VendorAddress.cs" />
+    <Compile Include="Entities\VendorAddress.Generated.cs">
+      <DependentUpon>VendorAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\VendorContact.cs" />
+    <Compile Include="Entities\VendorContact.Generated.cs">
+      <DependentUpon>VendorContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WorkOrder.cs" />
+    <Compile Include="Entities\WorkOrder.Generated.cs">
+      <DependentUpon>WorkOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WorkOrderRouting.cs" />
+    <Compile Include="Entities\WorkOrderRouting.Generated.cs">
+      <DependentUpon>WorkOrderRouting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\AddressMap.cs" />
+    <Compile Include="Mapping\AddressMap.Generated.cs">
+      <DependentUpon>AddressMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\AddressTypeMap.cs" />
+    <Compile Include="Mapping\AddressTypeMap.Generated.cs">
+      <DependentUpon>AddressTypeMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\AWBuildVersionMap.cs" />
+    <Compile Include="Mapping\AWBuildVersionMap.Generated.cs">
+      <DependentUpon>AWBuildVersionMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\BillOfMaterialsMap.cs" />
+    <Compile Include="Mapping\BillOfMaterialsMap.Generated.cs">
+      <DependentUpon>BillOfMaterialsMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ContactMap.cs" />
+    <Compile Include="Mapping\ContactMap.Generated.cs">
+      <DependentUpon>ContactMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ContactTypeMap.cs" />
+    <Compile Include="Mapping\ContactTypeMap.Generated.cs">
+      <DependentUpon>ContactTypeMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\CountryRegionMap.cs" />
+    <Compile Include="Mapping\CountryRegionMap.Generated.cs">
+      <DependentUpon>CountryRegionMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\CreditCardMap.cs" />
+    <Compile Include="Mapping\CreditCardMap.Generated.cs">
+      <DependentUpon>CreditCardMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\CultureMap.cs" />
+    <Compile Include="Mapping\CultureMap.Generated.cs">
+      <DependentUpon>CultureMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\CurrencyMap.cs" />
+    <Compile Include="Mapping\CurrencyMap.Generated.cs">
+      <DependentUpon>CurrencyMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\CurrencyRateMap.cs" />
+    <Compile Include="Mapping\CurrencyRateMap.Generated.cs">
+      <DependentUpon>CurrencyRateMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\CustomerAddressMap.cs" />
+    <Compile Include="Mapping\CustomerAddressMap.Generated.cs">
+      <DependentUpon>CustomerAddressMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\CustomerMap.cs" />
+    <Compile Include="Mapping\CustomerMap.Generated.cs">
+      <DependentUpon>CustomerMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\DatabaseLogMap.cs" />
+    <Compile Include="Mapping\DatabaseLogMap.Generated.cs">
+      <DependentUpon>DatabaseLogMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\DepartmentMap.cs" />
+    <Compile Include="Mapping\DepartmentMap.Generated.cs">
+      <DependentUpon>DepartmentMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\DocumentMap.cs" />
+    <Compile Include="Mapping\DocumentMap.Generated.cs">
+      <DependentUpon>DocumentMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\EmployeeDepartmentHistoryMap.cs" />
+    <Compile Include="Mapping\EmployeeDepartmentHistoryMap.Generated.cs">
+      <DependentUpon>EmployeeDepartmentHistoryMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\EmployeeMap.cs" />
+    <Compile Include="Mapping\EmployeeMap.Generated.cs">
+      <DependentUpon>EmployeeMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\EmployeePayHistoryMap.cs" />
+    <Compile Include="Mapping\EmployeePayHistoryMap.Generated.cs">
+      <DependentUpon>EmployeePayHistoryMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ErrorLogMap.cs" />
+    <Compile Include="Mapping\ErrorLogMap.Generated.cs">
+      <DependentUpon>ErrorLogMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\IllustrationMap.cs" />
+    <Compile Include="Mapping\IllustrationMap.Generated.cs">
+      <DependentUpon>IllustrationMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\IndividualMap.cs" />
+    <Compile Include="Mapping\IndividualMap.Generated.cs">
+      <DependentUpon>IndividualMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\JobCandidateMap.cs" />
+    <Compile Include="Mapping\JobCandidateMap.Generated.cs">
+      <DependentUpon>JobCandidateMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\LocationMap.cs" />
+    <Compile Include="Mapping\LocationMap.Generated.cs">
+      <DependentUpon>LocationMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ProductCategoryMap.cs" />
+    <Compile Include="Mapping\ProductCategoryMap.Generated.cs">
+      <DependentUpon>ProductCategoryMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ProductCostHistoryMap.cs" />
+    <Compile Include="Mapping\ProductCostHistoryMap.Generated.cs">
+      <DependentUpon>ProductCostHistoryMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ProductDescriptionMap.cs" />
+    <Compile Include="Mapping\ProductDescriptionMap.Generated.cs">
+      <DependentUpon>ProductDescriptionMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ProductInventoryMap.cs" />
+    <Compile Include="Mapping\ProductInventoryMap.Generated.cs">
+      <DependentUpon>ProductInventoryMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ProductListPriceHistoryMap.cs" />
+    <Compile Include="Mapping\ProductListPriceHistoryMap.Generated.cs">
+      <DependentUpon>ProductListPriceHistoryMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ProductMap.cs" />
+    <Compile Include="Mapping\ProductMap.Generated.cs">
+      <DependentUpon>ProductMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ProductModelMap.cs" />
+    <Compile Include="Mapping\ProductModelMap.Generated.cs">
+      <DependentUpon>ProductModelMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ProductModelProductDescriptionCultureMap.cs" />
+    <Compile Include="Mapping\ProductModelProductDescriptionCultureMap.Generated.cs">
+      <DependentUpon>ProductModelProductDescriptionCultureMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ProductPhotoMap.cs" />
+    <Compile Include="Mapping\ProductPhotoMap.Generated.cs">
+      <DependentUpon>ProductPhotoMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ProductReviewMap.cs" />
+    <Compile Include="Mapping\ProductReviewMap.Generated.cs">
+      <DependentUpon>ProductReviewMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ProductSubcategoryMap.cs" />
+    <Compile Include="Mapping\ProductSubcategoryMap.Generated.cs">
+      <DependentUpon>ProductSubcategoryMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ProductVendorMap.cs" />
+    <Compile Include="Mapping\ProductVendorMap.Generated.cs">
+      <DependentUpon>ProductVendorMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\PurchaseOrderDetailMap.cs" />
+    <Compile Include="Mapping\PurchaseOrderDetailMap.Generated.cs">
+      <DependentUpon>PurchaseOrderDetailMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\PurchaseOrderHeaderMap.cs" />
+    <Compile Include="Mapping\PurchaseOrderHeaderMap.Generated.cs">
+      <DependentUpon>PurchaseOrderHeaderMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\SalesOrderDetailMap.cs" />
+    <Compile Include="Mapping\SalesOrderDetailMap.Generated.cs">
+      <DependentUpon>SalesOrderDetailMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\SalesOrderHeaderMap.cs" />
+    <Compile Include="Mapping\SalesOrderHeaderMap.Generated.cs">
+      <DependentUpon>SalesOrderHeaderMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\SalesPersonMap.cs" />
+    <Compile Include="Mapping\SalesPersonMap.Generated.cs">
+      <DependentUpon>SalesPersonMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\SalesPersonQuotaHistoryMap.cs" />
+    <Compile Include="Mapping\SalesPersonQuotaHistoryMap.Generated.cs">
+      <DependentUpon>SalesPersonQuotaHistoryMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\SalesReasonMap.cs" />
+    <Compile Include="Mapping\SalesReasonMap.Generated.cs">
+      <DependentUpon>SalesReasonMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\SalesTaxRateMap.cs" />
+    <Compile Include="Mapping\SalesTaxRateMap.Generated.cs">
+      <DependentUpon>SalesTaxRateMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\SalesTerritoryHistoryMap.cs" />
+    <Compile Include="Mapping\SalesTerritoryHistoryMap.Generated.cs">
+      <DependentUpon>SalesTerritoryHistoryMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\SalesTerritoryMap.cs" />
+    <Compile Include="Mapping\SalesTerritoryMap.Generated.cs">
+      <DependentUpon>SalesTerritoryMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ScrapReasonMap.cs" />
+    <Compile Include="Mapping\ScrapReasonMap.Generated.cs">
+      <DependentUpon>ScrapReasonMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ShiftMap.cs" />
+    <Compile Include="Mapping\ShiftMap.Generated.cs">
+      <DependentUpon>ShiftMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ShipMethodMap.cs" />
+    <Compile Include="Mapping\ShipMethodMap.Generated.cs">
+      <DependentUpon>ShipMethodMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\ShoppingCartItemMap.cs" />
+    <Compile Include="Mapping\ShoppingCartItemMap.Generated.cs">
+      <DependentUpon>ShoppingCartItemMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\SpecialOfferMap.cs" />
+    <Compile Include="Mapping\SpecialOfferMap.Generated.cs">
+      <DependentUpon>SpecialOfferMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\SpecialOfferProductMap.cs" />
+    <Compile Include="Mapping\SpecialOfferProductMap.Generated.cs">
+      <DependentUpon>SpecialOfferProductMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\StateProvinceMap.cs" />
+    <Compile Include="Mapping\StateProvinceMap.Generated.cs">
+      <DependentUpon>StateProvinceMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\StoreContactMap.cs" />
+    <Compile Include="Mapping\StoreContactMap.Generated.cs">
+      <DependentUpon>StoreContactMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\StoreMap.cs" />
+    <Compile Include="Mapping\StoreMap.Generated.cs">
+      <DependentUpon>StoreMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\TransactionHistoryArchiveMap.cs" />
+    <Compile Include="Mapping\TransactionHistoryArchiveMap.Generated.cs">
+      <DependentUpon>TransactionHistoryArchiveMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\TransactionHistoryMap.cs" />
+    <Compile Include="Mapping\TransactionHistoryMap.Generated.cs">
+      <DependentUpon>TransactionHistoryMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\UnitMeasureMap.cs" />
+    <Compile Include="Mapping\UnitMeasureMap.Generated.cs">
+      <DependentUpon>UnitMeasureMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\VendorAddressMap.cs" />
+    <Compile Include="Mapping\VendorAddressMap.Generated.cs">
+      <DependentUpon>VendorAddressMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\VendorContactMap.cs" />
+    <Compile Include="Mapping\VendorContactMap.Generated.cs">
+      <DependentUpon>VendorContactMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\VendorMap.cs" />
+    <Compile Include="Mapping\VendorMap.Generated.cs">
+      <DependentUpon>VendorMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\WorkOrderMap.cs" />
+    <Compile Include="Mapping\WorkOrderMap.Generated.cs">
+      <DependentUpon>WorkOrderMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\WorkOrderRoutingMap.cs" />
+    <Compile Include="Mapping\WorkOrderRoutingMap.Generated.cs">
+      <DependentUpon>WorkOrderRoutingMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mocks\FakeAdventureWorksContext.cs" />
+    <Compile Include="Mocks\FakeAdventureWorksContext.Generated.cs">
+      <DependentUpon>FakeAdventureWorksContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\AddressExtensions.cs" />
+    <Compile Include="Queries\AddressExtensions.Generated.cs">
+      <DependentUpon>AddressExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\AddressTypeExtensions.cs" />
+    <Compile Include="Queries\AddressTypeExtensions.Generated.cs">
+      <DependentUpon>AddressTypeExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\AWBuildVersionExtensions.cs" />
+    <Compile Include="Queries\AWBuildVersionExtensions.Generated.cs">
+      <DependentUpon>AWBuildVersionExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\BillOfMaterialsExtensions.cs" />
+    <Compile Include="Queries\BillOfMaterialsExtensions.Generated.cs">
+      <DependentUpon>BillOfMaterialsExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ContactExtensions.cs" />
+    <Compile Include="Queries\ContactExtensions.Generated.cs">
+      <DependentUpon>ContactExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ContactTypeExtensions.cs" />
+    <Compile Include="Queries\ContactTypeExtensions.Generated.cs">
+      <DependentUpon>ContactTypeExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\CountryRegionExtensions.cs" />
+    <Compile Include="Queries\CountryRegionExtensions.Generated.cs">
+      <DependentUpon>CountryRegionExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\CreditCardExtensions.cs" />
+    <Compile Include="Queries\CreditCardExtensions.Generated.cs">
+      <DependentUpon>CreditCardExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\CultureExtensions.cs" />
+    <Compile Include="Queries\CultureExtensions.Generated.cs">
+      <DependentUpon>CultureExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\CurrencyExtensions.cs" />
+    <Compile Include="Queries\CurrencyExtensions.Generated.cs">
+      <DependentUpon>CurrencyExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\CurrencyRateExtensions.cs" />
+    <Compile Include="Queries\CurrencyRateExtensions.Generated.cs">
+      <DependentUpon>CurrencyRateExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\CustomerAddressExtensions.cs" />
+    <Compile Include="Queries\CustomerAddressExtensions.Generated.cs">
+      <DependentUpon>CustomerAddressExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\CustomerExtensions.cs" />
+    <Compile Include="Queries\CustomerExtensions.Generated.cs">
+      <DependentUpon>CustomerExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\DatabaseLogExtensions.cs" />
+    <Compile Include="Queries\DatabaseLogExtensions.Generated.cs">
+      <DependentUpon>DatabaseLogExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\DepartmentExtensions.cs" />
+    <Compile Include="Queries\DepartmentExtensions.Generated.cs">
+      <DependentUpon>DepartmentExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\DocumentExtensions.cs" />
+    <Compile Include="Queries\DocumentExtensions.Generated.cs">
+      <DependentUpon>DocumentExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\EmployeeDepartmentHistoryExtensions.cs" />
+    <Compile Include="Queries\EmployeeDepartmentHistoryExtensions.Generated.cs">
+      <DependentUpon>EmployeeDepartmentHistoryExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\EmployeeExtensions.cs" />
+    <Compile Include="Queries\EmployeeExtensions.Generated.cs">
+      <DependentUpon>EmployeeExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\EmployeePayHistoryExtensions.cs" />
+    <Compile Include="Queries\EmployeePayHistoryExtensions.Generated.cs">
+      <DependentUpon>EmployeePayHistoryExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ErrorLogExtensions.cs" />
+    <Compile Include="Queries\ErrorLogExtensions.Generated.cs">
+      <DependentUpon>ErrorLogExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\IllustrationExtensions.cs" />
+    <Compile Include="Queries\IllustrationExtensions.Generated.cs">
+      <DependentUpon>IllustrationExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\IndividualExtensions.cs" />
+    <Compile Include="Queries\IndividualExtensions.Generated.cs">
+      <DependentUpon>IndividualExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\JobCandidateExtensions.cs" />
+    <Compile Include="Queries\JobCandidateExtensions.Generated.cs">
+      <DependentUpon>JobCandidateExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\LocationExtensions.cs" />
+    <Compile Include="Queries\LocationExtensions.Generated.cs">
+      <DependentUpon>LocationExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ProductCategoryExtensions.cs" />
+    <Compile Include="Queries\ProductCategoryExtensions.Generated.cs">
+      <DependentUpon>ProductCategoryExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ProductCostHistoryExtensions.cs" />
+    <Compile Include="Queries\ProductCostHistoryExtensions.Generated.cs">
+      <DependentUpon>ProductCostHistoryExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ProductDescriptionExtensions.cs" />
+    <Compile Include="Queries\ProductDescriptionExtensions.Generated.cs">
+      <DependentUpon>ProductDescriptionExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ProductExtensions.cs" />
+    <Compile Include="Queries\ProductExtensions.Generated.cs">
+      <DependentUpon>ProductExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ProductInventoryExtensions.cs" />
+    <Compile Include="Queries\ProductInventoryExtensions.Generated.cs">
+      <DependentUpon>ProductInventoryExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ProductListPriceHistoryExtensions.cs" />
+    <Compile Include="Queries\ProductListPriceHistoryExtensions.Generated.cs">
+      <DependentUpon>ProductListPriceHistoryExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ProductModelExtensions.cs" />
+    <Compile Include="Queries\ProductModelExtensions.Generated.cs">
+      <DependentUpon>ProductModelExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ProductModelProductDescriptionCultureExtensions.cs" />
+    <Compile Include="Queries\ProductModelProductDescriptionCultureExtensions.Generated.cs">
+      <DependentUpon>ProductModelProductDescriptionCultureExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ProductPhotoExtensions.cs" />
+    <Compile Include="Queries\ProductPhotoExtensions.Generated.cs">
+      <DependentUpon>ProductPhotoExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ProductReviewExtensions.cs" />
+    <Compile Include="Queries\ProductReviewExtensions.Generated.cs">
+      <DependentUpon>ProductReviewExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ProductSubcategoryExtensions.cs" />
+    <Compile Include="Queries\ProductSubcategoryExtensions.Generated.cs">
+      <DependentUpon>ProductSubcategoryExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ProductVendorExtensions.cs" />
+    <Compile Include="Queries\ProductVendorExtensions.Generated.cs">
+      <DependentUpon>ProductVendorExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\PurchaseOrderDetailExtensions.cs" />
+    <Compile Include="Queries\PurchaseOrderDetailExtensions.Generated.cs">
+      <DependentUpon>PurchaseOrderDetailExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\PurchaseOrderHeaderExtensions.cs" />
+    <Compile Include="Queries\PurchaseOrderHeaderExtensions.Generated.cs">
+      <DependentUpon>PurchaseOrderHeaderExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SalesOrderDetailExtensions.cs" />
+    <Compile Include="Queries\SalesOrderDetailExtensions.Generated.cs">
+      <DependentUpon>SalesOrderDetailExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SalesOrderHeaderExtensions.cs" />
+    <Compile Include="Queries\SalesOrderHeaderExtensions.Generated.cs">
+      <DependentUpon>SalesOrderHeaderExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SalesPersonExtensions.cs" />
+    <Compile Include="Queries\SalesPersonExtensions.Generated.cs">
+      <DependentUpon>SalesPersonExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SalesPersonQuotaHistoryExtensions.cs" />
+    <Compile Include="Queries\SalesPersonQuotaHistoryExtensions.Generated.cs">
+      <DependentUpon>SalesPersonQuotaHistoryExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SalesReasonExtensions.cs" />
+    <Compile Include="Queries\SalesReasonExtensions.Generated.cs">
+      <DependentUpon>SalesReasonExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SalesTaxRateExtensions.cs" />
+    <Compile Include="Queries\SalesTaxRateExtensions.Generated.cs">
+      <DependentUpon>SalesTaxRateExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SalesTerritoryExtensions.cs" />
+    <Compile Include="Queries\SalesTerritoryExtensions.Generated.cs">
+      <DependentUpon>SalesTerritoryExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SalesTerritoryHistoryExtensions.cs" />
+    <Compile Include="Queries\SalesTerritoryHistoryExtensions.Generated.cs">
+      <DependentUpon>SalesTerritoryHistoryExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ScrapReasonExtensions.cs" />
+    <Compile Include="Queries\ScrapReasonExtensions.Generated.cs">
+      <DependentUpon>ScrapReasonExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ShiftExtensions.cs" />
+    <Compile Include="Queries\ShiftExtensions.Generated.cs">
+      <DependentUpon>ShiftExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ShipMethodExtensions.cs" />
+    <Compile Include="Queries\ShipMethodExtensions.Generated.cs">
+      <DependentUpon>ShipMethodExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ShoppingCartItemExtensions.cs" />
+    <Compile Include="Queries\ShoppingCartItemExtensions.Generated.cs">
+      <DependentUpon>ShoppingCartItemExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SpecialOfferExtensions.cs" />
+    <Compile Include="Queries\SpecialOfferExtensions.Generated.cs">
+      <DependentUpon>SpecialOfferExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SpecialOfferProductExtensions.cs" />
+    <Compile Include="Queries\SpecialOfferProductExtensions.Generated.cs">
+      <DependentUpon>SpecialOfferProductExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\StateProvinceExtensions.cs" />
+    <Compile Include="Queries\StateProvinceExtensions.Generated.cs">
+      <DependentUpon>StateProvinceExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\StoreContactExtensions.cs" />
+    <Compile Include="Queries\StoreContactExtensions.Generated.cs">
+      <DependentUpon>StoreContactExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\StoreExtensions.cs" />
+    <Compile Include="Queries\StoreExtensions.Generated.cs">
+      <DependentUpon>StoreExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\TransactionHistoryArchiveExtensions.cs" />
+    <Compile Include="Queries\TransactionHistoryArchiveExtensions.Generated.cs">
+      <DependentUpon>TransactionHistoryArchiveExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\TransactionHistoryExtensions.cs" />
+    <Compile Include="Queries\TransactionHistoryExtensions.Generated.cs">
+      <DependentUpon>TransactionHistoryExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\UnitMeasureExtensions.cs" />
+    <Compile Include="Queries\UnitMeasureExtensions.Generated.cs">
+      <DependentUpon>UnitMeasureExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\VendorAddressExtensions.cs" />
+    <Compile Include="Queries\VendorAddressExtensions.Generated.cs">
+      <DependentUpon>VendorAddressExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\VendorContactExtensions.cs" />
+    <Compile Include="Queries\VendorContactExtensions.Generated.cs">
+      <DependentUpon>VendorContactExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\VendorExtensions.cs" />
+    <Compile Include="Queries\VendorExtensions.Generated.cs">
+      <DependentUpon>VendorExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\WorkOrderExtensions.cs" />
+    <Compile Include="Queries\WorkOrderExtensions.Generated.cs">
+      <DependentUpon>WorkOrderExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\WorkOrderRoutingExtensions.cs" />
+    <Compile Include="Queries\WorkOrderRoutingExtensions.Generated.cs">
+      <DependentUpon>WorkOrderRoutingExtensions.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AdventureWorks.csp" />
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
