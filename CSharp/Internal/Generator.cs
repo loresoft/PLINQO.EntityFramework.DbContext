@@ -46,6 +46,7 @@ namespace SchemaMapper
             TableNaming = TableNaming.Singular;
             CleanExpressions = new List<string> { @"^\d+" };
             IgnoreExpressions = new List<string>();
+            RenameRules = new Dictionary<string, string>();
         }
 
         public TableNaming TableNaming { get; set; }
@@ -59,6 +60,8 @@ namespace SchemaMapper
         public List<string> IgnoreExpressions { get; set; }
 
         public List<string> CleanExpressions { get; set; }
+
+        public Dictionary<string, string> RenameRules { get; set; }
 
         public bool IncludeViews { get; set; }
 
@@ -76,6 +79,10 @@ namespace SchemaMapper
 
         public string CleanName(string name)
         {
+            string rename;
+            if (RenameRules.TryGetValue(name, out rename))
+                return rename;
+
             if (CleanExpressions.Count == 0)
                 return name;
 

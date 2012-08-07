@@ -17,6 +17,7 @@
 <%@ Import Namespace="System.Linq" %>
 <%@ Import Namespace="System.Text" %>
 <%@ Import Namespace="System.Text.RegularExpressions" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
 
 <%@ Import Namespace="SchemaMapper" %>
 
@@ -113,6 +114,13 @@
              Default="False"
              Optional="True"
              Description="Include views as entities." %>
+             
+<%@ Property Name="RenameMapping"
+             Type="CodeSmith.CustomProperties.NameValueCollection"
+             Category="5.Customization"
+             Default=""
+             Optional="True"
+             Description="Name value pair for custom renaming. Name is orginal name, Value is new name." %>
 
 
 
@@ -177,8 +185,6 @@
              Default="True"
              Optional="True"
              Description="Mark mock files as internal." %>
-
-
 
 <%@ Register Name="ContextGeneratedClass"
              Template="Internal\Context.Generated.cst"
@@ -247,6 +253,9 @@ Generating Entities ...
           if (!string.IsNullOrEmpty(s))
             generator.Settings.CleanExpressions.Add(s);
 
+        foreach(NameValueEntry pair in RenameMapping)
+            generator.Settings.RenameRules[pair.Key] = pair.Value;
+          
         generator.SchemaItemProcessed += OnSchemaItemProcessed;
         
         // generate from database
