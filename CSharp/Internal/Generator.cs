@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -60,6 +59,8 @@ namespace SchemaMapper
         public List<string> IgnoreExpressions { get; set; }
 
         public List<string> CleanExpressions { get; set; }
+
+        public bool IncludeViews { get; set; }
 
         public bool InclusionMode { get; set; }
 
@@ -176,7 +177,6 @@ namespace SchemaMapper
             const string globalContextname = "global::RelationshipName";
             return UniqueName(globalContextname, name);
         }
-
     }
 
     public class Generator
@@ -208,7 +208,7 @@ namespace SchemaMapper
         public EntityContext Generate(DatabaseSchema databaseSchema)
         {
             // only DeepLoad when in ignore mode
-            databaseSchema.DeepLoad = !Settings.InclusionMode;
+            databaseSchema.DeepLoad = true;
 
             var entityContext = new EntityContext();
             entityContext.DatabaseName = databaseSchema.Name;
@@ -237,6 +237,25 @@ namespace SchemaMapper
                 OnSchemaItemProcessed(t.FullName);
             }
 
+            if (Settings.IncludeViews)
+            {
+                foreach (ViewSchema v in databaseSchema.Views)
+                {
+                    if (Settings.IsIgnored(v.FullName))
+                    {
+                        Debug.WriteLine("Skipping View: " + v.FullName);
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Getting Table Schema: " + v.FullName);
+                        GetEntity(entityContext, v);
+                    }
+
+                    OnSchemaItemProcessed(v.FullName);
+
+                }
+            }
+
             return entityContext;
         }
 
@@ -249,7 +268,7 @@ namespace SchemaMapper
               ?? CreateEntity(entityContext, tableSchema);
 
             if (!entity.Properties.IsProcessed)
-                CreateProperties(entity, tableSchema);
+                CreateProperties(entity, tableSchema.Columns);
 
             if (processRelationships && !entity.Relationships.IsProcessed)
                 CreateRelationships(entityContext, entity, tableSchema);
@@ -261,7 +280,21 @@ namespace SchemaMapper
             return entity;
         }
 
-        private Entity CreateEntity(EntityContext entityContext, TableSchema tableSchema)
+        private Entity GetEntity(EntityContext entityContext, ViewSchema viewSchema)
+        {
+            string key = viewSchema.FullName;
+
+            Entity entity = entityContext.Entities.ByTable(key)
+              ?? CreateEntity(entityContext, viewSchema);
+
+            if (!entity.Properties.IsProcessed)
+                CreateProperties(entity, viewSchema.Columns);
+
+            entity.IsProcessed = true;
+            return entity;
+        }
+
+        private Entity CreateEntity(EntityContext entityContext, TabularObjectBase tableSchema)
         {
             var entity = new Entity
             {
@@ -290,59 +323,65 @@ namespace SchemaMapper
         }
 
 
-        private void CreateProperties(Entity entity, TableSchema tableSchema)
+        private void CreateProperties(Entity entity, IEnumerable<DataObjectBase> columnSchemaCollection)
         {
-            foreach (ColumnSchema columnSchema in tableSchema.Columns)
+            foreach (DataObjectBase dataObjectBase in columnSchemaCollection)
             {
                 // skip unsupported type
-                if (columnSchema.NativeType.Equals("hierarchyid", StringComparison.OrdinalIgnoreCase)
-                  || columnSchema.NativeType.Equals("sql_variant", StringComparison.OrdinalIgnoreCase))
+                if (dataObjectBase.NativeType.Equals("hierarchyid", StringComparison.OrdinalIgnoreCase)
+                  || dataObjectBase.NativeType.Equals("sql_variant", StringComparison.OrdinalIgnoreCase))
                 {
-                    Debug.WriteLine(string.Format("Skipping column '{0}' because it has an unsupported db type '{1}'.",
-                                                  columnSchema.Name, columnSchema.NativeType));
+                    Debug.WriteLine("Skipping column '{0}' because it has an unsupported db type '{1}'.",
+                        dataObjectBase.Name, dataObjectBase.NativeType);
+
                     continue;
                 }
 
-                Property property = entity.Properties.ByColumn(columnSchema.Name);
+                Property property = entity.Properties.ByColumn(dataObjectBase.Name);
 
                 if (property == null)
                 {
-                    property = new Property { ColumnName = columnSchema.Name };
+                    property = new Property { ColumnName = dataObjectBase.Name };
                     entity.Properties.Add(property);
                 }
 
-                string propertyName = ToPropertyName(entity.ClassName, columnSchema.Name);
+                string propertyName = ToPropertyName(entity.ClassName, dataObjectBase.Name);
                 propertyName = _namer.UniqueName(entity.ClassName, propertyName);
 
                 property.PropertyName = propertyName;
 
-                property.DataType = columnSchema.DataType;
-                property.SystemType = columnSchema.SystemType;
-                property.NativeType = columnSchema.NativeType;
+                property.DataType = dataObjectBase.DataType;
+                property.SystemType = dataObjectBase.SystemType;
+                property.NativeType = dataObjectBase.NativeType;
 
-                property.IsPrimaryKey = columnSchema.IsPrimaryKeyMember;
-                property.IsForeignKey = columnSchema.IsForeignKeyMember;
-                property.IsNullable = columnSchema.AllowDBNull;
+                property.IsNullable = dataObjectBase.AllowDBNull;
 
-                property.IsIdentity = IsIdentity(columnSchema);
-                property.IsRowVersion = IsRowVersion(columnSchema);
-                property.IsAutoGenerated = IsDbGenerated(columnSchema);
+                property.IsIdentity = IsIdentity(dataObjectBase);
+                property.IsRowVersion = IsRowVersion(dataObjectBase);
+                property.IsAutoGenerated = IsDbGenerated(dataObjectBase);
 
-                if (columnSchema.IsUnique)
-                    property.IsUnique = columnSchema.IsUnique;
 
                 if (property.SystemType == typeof(string)
                   || property.SystemType == typeof(byte[]))
                 {
-                    property.MaxLength = columnSchema.Size;
+                    property.MaxLength = dataObjectBase.Size;
                 }
 
                 if (property.SystemType == typeof(float)
                   || property.SystemType == typeof(double)
                   || property.SystemType == typeof(decimal))
                 {
-                    property.Precision = columnSchema.Precision;
-                    property.Scale = columnSchema.Scale;
+                    property.Precision = dataObjectBase.Precision;
+                    property.Scale = dataObjectBase.Scale;
+                }
+
+                var columnSchema = dataObjectBase as ColumnSchema;
+                if (columnSchema != null)
+                {
+                    property.IsPrimaryKey = columnSchema.IsPrimaryKeyMember;
+                    property.IsForeignKey = columnSchema.IsForeignKeyMember;
+                    if (columnSchema.IsUnique)
+                        property.IsUnique = columnSchema.IsUnique;
                 }
 
                 property.IsProcessed = true;

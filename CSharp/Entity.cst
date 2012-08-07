@@ -107,6 +107,13 @@
              Default="False"
              Optional="True"
              Description="Use interfaces for DbContext." %>
+<%@ Property Name="IncludeViews"
+             Type="Boolean"
+             Category="5.Customization"
+             Default="False"
+             Optional="True"
+             Description="Include views as entities." %>
+
 
 
 <%@ Property Name="IncludeQuery"
@@ -228,7 +235,10 @@ Generating Entities ...
         generator.Settings.EntityNaming = EntityNaming;
         generator.Settings.RelationshipNaming = RelationshipNaming;
         generator.Settings.ContextNaming = ContextNaming;
-
+        
+        generator.Settings.IncludeViews = IncludeViews;
+        generator.Settings.InclusionMode = InclusionMode;
+        
         foreach(string s in IgnoreList)
           if (!string.IsNullOrEmpty(s))
             generator.Settings.IgnoreExpressions.Add(s);
