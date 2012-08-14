@@ -405,7 +405,7 @@ namespace SchemaMapper
                 if (Settings.IsIgnored(tableKey.ForeignKeyTable.FullName)
                     || Settings.IsIgnored(tableKey.PrimaryKeyTable.FullName))
                 {
-                    Debug.WriteLine("Skipping relationship '{0}' because table '{1}' or '{2}' is ignored.", 
+                    Debug.WriteLine("Skipping relationship '{0}' because table '{1}' or '{2}' is ignored.",
                         tableKey.FullName, tableKey.ForeignKeyTable.FullName, tableKey.PrimaryKeyTable.FullName);
 
                     continue;

@@ -24,6 +24,6 @@
     <file src="..\..\CSharp\Internal\*.cs" target="tools\CSharp\Internal\" />
     <file src="..\..\CSharp\*.cst" target="tools\CSharp\" />
     <file src="install.ps1" target="tools\install.ps1" />
-    <file src="readme.txt" target="content\" />
+    <file src="..\..\readme.md" target="content\" />
   </files>
 </package>

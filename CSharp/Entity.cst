@@ -245,16 +245,19 @@ Generating Entities ...
         generator.Settings.IncludeViews = IncludeViews;
         generator.Settings.InclusionMode = InclusionMode;
         
-        foreach(string s in IgnoreList)
-          if (!string.IsNullOrEmpty(s))
-            generator.Settings.IgnoreExpressions.Add(s);
+        if (IgnoreList != null)
+            foreach(string s in IgnoreList)
+              if (!string.IsNullOrEmpty(s))
+                generator.Settings.IgnoreExpressions.Add(s);
 
-        foreach(string s in CleanExpressions)
-          if (!string.IsNullOrEmpty(s))
-            generator.Settings.CleanExpressions.Add(s);
+        if (CleanExpressions != null)
+            foreach(string s in CleanExpressions)
+              if (!string.IsNullOrEmpty(s))
+                generator.Settings.CleanExpressions.Add(s);
 
-        foreach(NameValueEntry pair in RenameMapping)
-            generator.Settings.RenameRules[pair.Key] = pair.Value;
+        if (RenameMapping != null)
+            foreach(NameValueEntry pair in RenameMapping)
+                generator.Settings.RenameRules[pair.Key] = pair.Value;
           
         generator.SchemaItemProcessed += OnSchemaItemProcessed;
         
