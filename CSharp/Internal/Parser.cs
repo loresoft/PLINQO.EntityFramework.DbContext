@@ -276,14 +276,14 @@ namespace SchemaMapper
                 return null;
 
             var parser = new CSharpParser();
-            CompilationUnit compilationUnit;
+            SyntaxTree syntaxTree;
 
             using (var stream = File.OpenText(mappingFile))
-                compilationUnit = parser.Parse(stream, mappingFile);
+                syntaxTree = parser.Parse(stream, mappingFile);
 
             var visitor = new MappingVisitor();
 
-            visitor.VisitCompilationUnit(compilationUnit, null);
+            visitor.VisitSyntaxTree(syntaxTree, null);
             var parsedEntity = visitor.ParsedEntity;
 
             if (parsedEntity != null)
@@ -388,14 +388,14 @@ namespace SchemaMapper
                 return null;
 
             var parser = new CSharpParser();
-            CompilationUnit compilationUnit;
+            SyntaxTree syntaxTree;
 
             using (var stream = File.OpenText(contextFile))
-                compilationUnit = parser.Parse(stream, contextFile);
+                syntaxTree = parser.Parse(stream, contextFile);
 
             var visitor = new ContextVisitor();
 
-            visitor.VisitCompilationUnit(compilationUnit, null);
+            visitor.VisitSyntaxTree(syntaxTree, null);
             var parsedContext = visitor.ParsedContext;
 
             if (parsedContext != null)
