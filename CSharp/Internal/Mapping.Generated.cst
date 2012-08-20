@@ -102,6 +102,12 @@ public string PropertyExpression(Property property)
       sb.Append(' ', 4 * 4);
       sb.Append(".HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed)");
     }
+    else if (property.IsPrimaryKey == true)
+    {
+      sb.AppendLine();
+      sb.Append(' ', 4 * 4);
+      sb.Append(".HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)");
+    }
 
     if ((isString || isByteArray) && (property.MaxLength > 0 && property.MaxLength < 8000))
     {
