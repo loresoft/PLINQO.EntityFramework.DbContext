@@ -323,11 +323,11 @@ namespace SchemaMapper
         public ContextVisitor()
         {
             ContextBaseType = "DbContext";
-            DataSetType = "DbSet";
+            DataSetTypes = new HashSet<string> {"DbSet", "IDbSet"};
         }
 
         public string ContextBaseType { get; set; }
-        public string DataSetType { get; set; }
+        public HashSet<string> DataSetTypes { get; set; }
 
         public ParsedContext ParsedContext { get; set; }
 
@@ -357,7 +357,7 @@ namespace SchemaMapper
 
             // look for property to return generic DbSet type
             var memberType = propertyDeclaration.ReturnType as MemberType;
-            if (memberType == null || memberType.MemberName != DataSetType)
+            if (memberType == null || !DataSetTypes.Contains(memberType.MemberName))
                 return base.VisitPropertyDeclaration(propertyDeclaration, data);
 
             // get the first generic type
