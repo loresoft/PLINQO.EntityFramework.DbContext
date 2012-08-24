@@ -47,7 +47,7 @@ namespace <%= EntityNamespace %>
 <% } else if(p.SystemType == typeof(Decimal) || p.SystemType == typeof(Single) || p.SystemType == typeof(Double)) { %>
             <%= p.PropertyName.ToSafeName() %> = (<%= p.SystemType %>)<%= Regex.Replace(p.Default, @"[\(\) ]", "").Trim() %>;
 <% } else if(p.SystemType == typeof(string)) { %>
-            <%= p.PropertyName.ToSafeName() %> = "<%= Regex.Replace(p.Default, @"[\(\)]", "").Trim() %>";
+            <%= p.PropertyName.ToSafeName() %> = "<%= Regex.Replace(p.Default, @"[\(\)']", "").Trim() %>";
 <% } else if(p.SystemType == typeof(bool) && p.Default.Contains("1")) { %>
             <%= p.PropertyName.ToSafeName() %> = true;
 <% } // defaults%>
