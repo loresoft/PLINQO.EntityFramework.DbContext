@@ -82,7 +82,14 @@
              Type="SchemaMapper.ContextNaming"
              Category="4.Hints"
              Default="Plural"
-             Description="Tell generator how the context properties are to be named." %>
+             Description="Tell generator how the context properties are to be named." %>             
+
+
+<%@ Property Name="ContextClassName"
+             Type="String"
+             Category="4.Hints"
+             Description="Tell generator how the context class is to be named." %>             
+
 
 <%@ Property Name="IgnoreList"
              Type="CodeSmith.CustomProperties.StringCollection"
@@ -297,7 +304,7 @@ Generating Entities ...
         this.CopyPropertiesTo(editableClass);
 
         string rootDirectory = Path.GetFullPath(ContextDirectory);
-        string className = entityContext.ClassName;
+        string className = ContextClassName;
 
         string editableFile = className + ".cs";
         editableFile = Path.Combine(rootDirectory, editableFile);
@@ -488,7 +495,7 @@ Generating Entities ...
         this.CopyPropertiesTo(editableClass);
 
         string rootDirectory = Path.GetFullPath(MockDirectory);
-        string className = "Fake" + entityContext.ClassName;
+        string className = "Fake" + ContextClassName;
 
         string editableFile = className + ".cs";
         editableFile = Path.Combine(rootDirectory, editableFile);

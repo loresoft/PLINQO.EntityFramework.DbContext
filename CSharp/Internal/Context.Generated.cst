@@ -12,6 +12,7 @@
 
 <%@ Property Name="EntityContext" Type="SchemaMapper.EntityContext"  %>
 
+<%@ Property Name="ContextClassName" Type="System.String"  %>
 <%@ Property Name="ContextNamespace" Type="System.String"  %>
 <%@ Property Name="EntityNamespace" Type="System.String"  %>
 <%@ Property Name="MappingNamespace" Type="System.String"  %>
@@ -48,7 +49,7 @@ namespace <%= ContextNamespace %>
         int SaveChanges();
     }
 
-    public partial interface I<%= EntityContext.ClassName.ToSafeName() %> : IDbContext
+    public partial interface I<%= ContextClassName.ToSafeName() %> : IDbContext
     {
 <% foreach(var p in EntityContext.Entities) { %>
         System.Data.Entity.IDbSet<<%= EntityNamespace %>.<%= p.ClassName.ToSafeName() %>> <%= p.ContextName.ToSafeName() %> { get; set; }
@@ -56,34 +57,34 @@ namespace <%= ContextNamespace %>
     }
 
 <% } // if interface %>
-    public partial class <%= EntityContext.ClassName.ToSafeName() %>
-        : System.Data.Entity.DbContext<%= InterfaceMode ? ", I" + EntityContext.ClassName.ToSafeName() : string.Empty %>
+    public partial class <%= ContextClassName.ToSafeName() %>
+        : System.Data.Entity.DbContext<%= InterfaceMode ? ", I" + ContextClassName.ToSafeName() : string.Empty %>
     {
-        public <%= EntityContext.ClassName.ToSafeName() %>()
-            :base("Name=<%= EntityContext.ClassName.ToSafeName() %>")
+        public <%= ContextClassName.ToSafeName() %>()
+            :base("Name=<%= ContextClassName.ToSafeName() %>")
         { }
 
-        public <%= EntityContext.ClassName.ToSafeName() %>(System.Data.Entity.Infrastructure.DbCompiledModel model)
-            : base("Name=<%= EntityContext.ClassName.ToSafeName() %>", model)
+        public <%= ContextClassName.ToSafeName() %>(System.Data.Entity.Infrastructure.DbCompiledModel model)
+            : base("Name=<%= ContextClassName.ToSafeName() %>", model)
         { }
 
-        public <%= EntityContext.ClassName.ToSafeName() %>(string nameOrConnectionString)
+        public <%= ContextClassName.ToSafeName() %>(string nameOrConnectionString)
             : base(nameOrConnectionString)
         { }
 
-        public <%= EntityContext.ClassName.ToSafeName() %>(string nameOrConnectionString, System.Data.Entity.Infrastructure.DbCompiledModel model)
+        public <%= ContextClassName.ToSafeName() %>(string nameOrConnectionString, System.Data.Entity.Infrastructure.DbCompiledModel model)
             : base(nameOrConnectionString, model)
         { }
 
-        public <%= EntityContext.ClassName.ToSafeName() %>(System.Data.Common.DbConnection existingConnection, bool contextOwnsConnection)
+        public <%= ContextClassName.ToSafeName() %>(System.Data.Common.DbConnection existingConnection, bool contextOwnsConnection)
             : base(existingConnection, contextOwnsConnection)
         { }
 
-        public <%= EntityContext.ClassName.ToSafeName() %>(System.Data.Common.DbConnection existingConnection, System.Data.Entity.Infrastructure.DbCompiledModel model, bool contextOwnsConnection)
+        public <%= ContextClassName.ToSafeName() %>(System.Data.Common.DbConnection existingConnection, System.Data.Entity.Infrastructure.DbCompiledModel model, bool contextOwnsConnection)
             : base(existingConnection, model, contextOwnsConnection)
         { }
 
-        public <%= EntityContext.ClassName.ToSafeName() %>(System.Data.Objects.ObjectContext objectContext, bool dbContextOwnsObjectContext)
+        public <%= ContextClassName.ToSafeName() %>(System.Data.Objects.ObjectContext objectContext, bool dbContextOwnsObjectContext)
             : base(objectContext, dbContextOwnsObjectContext)
         { }
 

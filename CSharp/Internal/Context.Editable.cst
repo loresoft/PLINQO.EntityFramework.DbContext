@@ -12,6 +12,7 @@
 
 <%@ Property Name="EntityContext" Type="SchemaMapper.EntityContext"  %>
 
+<%@ Property Name="ContextClassName" Type="System.String"  %>
 <%@ Property Name="ContextNamespace" Type="System.String"  %>
 <%@ Property Name="EntityNamespace" Type="System.String"  %>
 <%@ Property Name="MappingNamespace" Type="System.String"  %>
@@ -30,13 +31,13 @@ using <%= MappingNamespace %>;
 namespace <%= ContextNamespace %>
 {
 <% if (InterfaceMode) { %>
-    public partial interface I<%= EntityContext.ClassName.ToSafeName() %>
+    public partial interface I<%= ContextClassName.ToSafeName() %>
     {
 
     }
     
 <% } // if interface %>    
-    public partial class <%= EntityContext.ClassName.ToSafeName() %>
+    public partial class <%= ContextClassName.ToSafeName() %>
     {
         protected void InitializeMapping(DbModelBuilder modelBuilder)
         {
