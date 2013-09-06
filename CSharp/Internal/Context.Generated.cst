@@ -123,6 +123,6 @@ namespace <%= ContextNamespace %>
 <% } // if interface %>
 
         partial void InitializeContext();
-        partial void InitializeMapping(DbModelBuilder modelBuilder)
+        partial void InitializeMapping(System.Data.Entity.DbModelBuilder modelBuilder);
     }
 }
