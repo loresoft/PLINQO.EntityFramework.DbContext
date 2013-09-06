@@ -389,7 +389,7 @@ namespace SchemaMapper
                     property.IsPrimaryKey = columnSchema.IsPrimaryKeyMember;
                     property.IsForeignKey = columnSchema.IsForeignKeyMember;
                     if (columnSchema.IsUnique)
-                        property.IsUnique = columnSchema.IsUnique;
+                        property.IsUnique = true;
                 }
 
                 property.IsProcessed = true;
@@ -432,8 +432,8 @@ namespace SchemaMapper
             bool foreignMembersRequired;
             bool primaryMembersRequired;
 
-            var foreignMembers = GetKeyMembers(foreignEntity, tableKeySchema.ForeignKeyMemberColumns, tableKeySchema.Name, out foreignMembersRequired);
-            var primaryMembers = GetKeyMembers(primaryEntity, tableKeySchema.PrimaryKeyMemberColumns, tableKeySchema.Name, out primaryMembersRequired);
+            List<string> foreignMembers = GetKeyMembers(foreignEntity, tableKeySchema.ForeignKeyMemberColumns, tableKeySchema.Name, out foreignMembersRequired);
+            List<string> primaryMembers = GetKeyMembers(primaryEntity, tableKeySchema.PrimaryKeyMemberColumns, tableKeySchema.Name, out primaryMembersRequired);
 
             Relationship foreignRelationship = foreignEntity.Relationships
               .FirstOrDefault(r => r.RelationshipName == relationshipName && r.IsForeignKey);
