@@ -476,17 +476,10 @@ namespace SchemaMapper
             primaryRelationship.OtherProperties = new List<string>(foreignMembers);
             primaryRelationship.CascadeDelete = isCascadeDelete;
 
-            // one to one not supported
-            //bool isOneToOne = IsOneToOne(tableKeySchema, foreignRelationship);
-
-            //if (isOneToOne)
-            //    primaryRelationship.ThisCardinality = primaryMembersRequired ? Cardinality.One : Cardinality.ZeroOrOne;
-            //else
             primaryRelationship.ThisCardinality = Cardinality.Many;
 
             string primaryPropertyName = prefix + foreignName;
-            //if (!isOneToOne)
-            //    primaryPropertyName = Settings.RelationshipName(primaryPropertyName);
+            primaryPropertyName = Settings.RelationshipName(primaryPropertyName);
 
             primaryPropertyName = ToPropertyName(primaryEntity.ClassName, primaryPropertyName);
             primaryPropertyName = _namer.UniqueName(primaryEntity.ClassName, primaryPropertyName);

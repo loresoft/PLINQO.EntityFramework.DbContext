@@ -27,9 +27,11 @@ namespace AdventureWorks.Data.Mapping
             // Properties
             Property(t => t.EmployeeID)
                 .HasColumnName("EmployeeID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.RateChangeDate)
                 .HasColumnName("RateChangeDate")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.Rate)
                 .HasColumnName("Rate")
@@ -52,4 +54,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

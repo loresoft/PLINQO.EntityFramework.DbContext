@@ -16,6 +16,11 @@ namespace AdventureWorks.Data.Entities
     {
         public SalesPerson()
         {
+            Bonus = (System.Decimal)0.00;
+            CommissionPct = (System.Decimal)0.00;
+            SalesYTD = (System.Decimal)0.00;
+            SalesLastYear = (System.Decimal)0.00;
+            ModifiedDate = DateTime.Now;
             SalesOrderHeaders = new List<SalesOrderHeader>();
             SalesPersonQuotaHistories = new List<SalesPersonQuotaHistory>();
             SalesTerritoryHistories = new List<SalesTerritoryHistory>();

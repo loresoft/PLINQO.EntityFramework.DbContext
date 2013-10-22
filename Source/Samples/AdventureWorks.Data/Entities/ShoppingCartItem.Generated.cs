@@ -16,6 +16,9 @@ namespace AdventureWorks.Data.Entities
     {
         public ShoppingCartItem()
         {
+            Quantity = 1;
+            DateCreated = DateTime.Now;
+            ModifiedDate = DateTime.Now;
         }
 
         public int ShoppingCartItemID { get; set; }

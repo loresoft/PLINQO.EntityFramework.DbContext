@@ -27,9 +27,11 @@ namespace AdventureWorks.Data.Mapping
             // Properties
             Property(t => t.SpecialOfferID)
                 .HasColumnName("SpecialOfferID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.ProductID)
                 .HasColumnName("ProductID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.Rowguid)
                 .HasColumnName("rowguid")
@@ -44,4 +46,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

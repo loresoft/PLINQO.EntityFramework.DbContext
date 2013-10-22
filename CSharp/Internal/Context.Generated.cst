@@ -46,6 +46,8 @@ namespace <%= ContextNamespace %>
         System.Data.Entity.IDbSet<TEntity> Set<TEntity>() where TEntity : class;
 
         int SaveChanges();
+        System.Threading.Tasks.Task<int> SaveChangesAsync();
+        System.Threading.Tasks.Task<int> SaveChangesAsync(System.Threading.CancellationToken cancellationToken);
     }
 
     public partial interface I<%= EntityContext.ClassName.ToSafeName() %> : IDbContext
@@ -94,13 +96,6 @@ namespace <%= ContextNamespace %>
         {
             InitializeContext();
         }
-
-        public <%= EntityContext.ClassName.ToSafeName() %>(System.Data.Objects.ObjectContext objectContext, bool dbContextOwnsObjectContext)
-            : base(objectContext, dbContextOwnsObjectContext)
-        {
-            InitializeContext();
-        }
-
 
 <% foreach(var p in EntityContext.Entities) { %>
         public System.Data.Entity.<%= InterfaceMode ? "I" : "" %>DbSet<<%= EntityNamespace %>.<%= p.ClassName.ToSafeName() %>> <%= p.ContextName.ToSafeName() %> { get; set; }

@@ -14,9 +14,5 @@ namespace AdventureWorks.Data
     
     public partial class AdventureWorksContext
     {
-        protected void InitializeMapping(DbModelBuilder modelBuilder)
-        {
-
-        }
     }
 }

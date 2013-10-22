@@ -160,6 +160,16 @@ namespace AdventureWorks.Data.Mocks
             return 0;
         }
 
+        public System.Threading.Tasks.Task<int> SaveChangesAsync()
+        {
+            return System.Threading.Tasks.Task<int>.FromResult(0);
+        }
+
+        public System.Threading.Tasks.Task<int> SaveChangesAsync(System.Threading.CancellationToken cancellationToken)
+        {
+            return System.Threading.Tasks.Task<int>.FromResult(0);
+        }
+
         public void Dispose()
         {
         }
@@ -289,4 +299,3 @@ namespace AdventureWorks.Data.Mocks
         }
     }
 }
-

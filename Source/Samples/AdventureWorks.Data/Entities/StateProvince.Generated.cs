@@ -16,6 +16,8 @@ namespace AdventureWorks.Data.Entities
     {
         public StateProvince()
         {
+            IsOnlyStateProvinceFlag = true;
+            ModifiedDate = DateTime.Now;
             Address = new List<Address>();
             SalesTaxRates = new List<SalesTaxRate>();
         }

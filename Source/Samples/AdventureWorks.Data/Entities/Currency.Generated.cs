@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public Currency()
         {
+            ModifiedDate = DateTime.Now;
             CountryRegions = new List<CountryRegion>();
             FromCurrencyRates = new List<CurrencyRate>();
             ToCurrencyRates = new List<CurrencyRate>();

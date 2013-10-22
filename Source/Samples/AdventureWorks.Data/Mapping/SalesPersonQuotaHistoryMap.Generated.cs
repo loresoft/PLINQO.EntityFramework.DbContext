@@ -27,9 +27,11 @@ namespace AdventureWorks.Data.Mapping
             // Properties
             Property(t => t.SalesPersonID)
                 .HasColumnName("SalesPersonID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.QuotaDate)
                 .HasColumnName("QuotaDate")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.SalesQuota)
                 .HasColumnName("SalesQuota")
@@ -52,4 +54,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

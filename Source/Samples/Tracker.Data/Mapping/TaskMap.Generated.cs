@@ -97,4 +97,3 @@ namespace Tracker.Data.Mapping
         }
     }
 }
-

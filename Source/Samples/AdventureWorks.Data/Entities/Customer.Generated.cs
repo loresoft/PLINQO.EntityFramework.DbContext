@@ -16,8 +16,11 @@ namespace AdventureWorks.Data.Entities
     {
         public Customer()
         {
+            ModifiedDate = DateTime.Now;
             CustomerAddresses = new List<CustomerAddress>();
+            Individuals = new List<Individual>();
             SalesOrderHeaders = new List<SalesOrderHeader>();
+            Stores = new List<Store>();
         }
 
         public int CustomerID { get; set; }
@@ -29,8 +32,8 @@ namespace AdventureWorks.Data.Entities
 
         public virtual SalesTerritory SalesTerritory { get; set; }
         public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
-        public virtual Individual Individual { get; set; }
+        public virtual ICollection<Individual> Individuals { get; set; }
         public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
-        public virtual Store Store { get; set; }
+        public virtual ICollection<Store> Stores { get; set; }
     }
 }

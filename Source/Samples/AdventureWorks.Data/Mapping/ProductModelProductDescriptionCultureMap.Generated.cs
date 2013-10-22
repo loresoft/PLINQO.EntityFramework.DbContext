@@ -27,12 +27,15 @@ namespace AdventureWorks.Data.Mapping
             // Properties
             Property(t => t.ProductModelID)
                 .HasColumnName("ProductModelID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.ProductDescriptionID)
                 .HasColumnName("ProductDescriptionID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.CultureID)
                 .HasColumnName("CultureID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .HasMaxLength(6)
                 .IsRequired();
             Property(t => t.ModifiedDate)
@@ -57,4 +60,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

@@ -27,9 +27,11 @@ namespace AdventureWorks.Data.Mapping
             // Properties
             Property(t => t.ProductID)
                 .HasColumnName("ProductID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.StartDate)
                 .HasColumnName("StartDate")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.EndDate)
                 .HasColumnName("EndDate")
@@ -52,4 +54,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

@@ -17,4 +17,3 @@ namespace AdventureWorks.Data.Queries
     {
     }
 }
-

@@ -16,6 +16,8 @@ namespace AdventureWorks.Data.Entities
     {
         public ProductInventory()
         {
+            Quantity = 0;
+            ModifiedDate = DateTime.Now;
         }
 
         public int ProductID { get; set; }

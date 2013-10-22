@@ -16,6 +16,9 @@ namespace AdventureWorks.Data.Entities
     {
         public Location()
         {
+            CostRate = (System.Decimal)0.00;
+            Availability = (System.Decimal)0.00;
+            ModifiedDate = DateTime.Now;
             ProductInventories = new List<ProductInventory>();
             WorkOrderRoutings = new List<WorkOrderRouting>();
         }

@@ -16,6 +16,9 @@ namespace AdventureWorks.Data.Entities
     {
         public BillOfMaterials()
         {
+            StartDate = DateTime.Now;
+            PerAssemblyQty = (System.Decimal)1.00;
+            ModifiedDate = DateTime.Now;
         }
 
         public int BillOfMaterialsID { get; set; }

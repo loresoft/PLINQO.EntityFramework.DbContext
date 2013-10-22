@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public ProductCostHistory()
         {
+            ModifiedDate = DateTime.Now;
         }
 
         public int ProductID { get; set; }

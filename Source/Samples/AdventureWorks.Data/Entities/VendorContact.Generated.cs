@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public VendorContact()
         {
+            ModifiedDate = DateTime.Now;
         }
 
         public int VendorID { get; set; }

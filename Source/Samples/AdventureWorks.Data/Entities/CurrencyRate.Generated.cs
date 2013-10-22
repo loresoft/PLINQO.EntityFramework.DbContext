@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public CurrencyRate()
         {
+            ModifiedDate = DateTime.Now;
             SalesOrderHeaders = new List<SalesOrderHeader>();
         }
 

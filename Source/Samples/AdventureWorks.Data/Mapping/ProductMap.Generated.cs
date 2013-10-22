@@ -152,4 +152,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

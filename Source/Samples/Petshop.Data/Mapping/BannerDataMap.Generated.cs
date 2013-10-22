@@ -27,6 +27,7 @@ namespace Petshop.Data.Mapping
             // Properties
             Property(t => t.FavCategory)
                 .HasColumnName("FavCategory")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .HasMaxLength(80)
                 .IsRequired();
             Property(t => t.BannerDataMember)
@@ -40,4 +41,3 @@ namespace Petshop.Data.Mapping
         }
     }
 }
-

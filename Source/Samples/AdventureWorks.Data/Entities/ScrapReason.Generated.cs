@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public ScrapReason()
         {
+            ModifiedDate = DateTime.Now;
             WorkOrders = new List<WorkOrder>();
         }
 

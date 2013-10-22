@@ -16,6 +16,8 @@ namespace Tracker.Data.Entities
     {
         public Role()
         {
+            CreatedDate = DateTime.Now;
+            ModifiedDate = DateTime.Now;
             Users = new List<User>();
         }
 

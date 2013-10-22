@@ -16,6 +16,9 @@ namespace AdventureWorks.Data.Entities
     {
         public Product()
         {
+            MakeFlag = true;
+            FinishedGoodsFlag = true;
+            ModifiedDate = DateTime.Now;
             ComponentBillOfMaterials = new List<BillOfMaterials>();
             AssemblyBillOfMaterials = new List<BillOfMaterials>();
             ProductCostHistories = new List<ProductCostHistory>();

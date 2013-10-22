@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public ProductModel()
         {
+            ModifiedDate = DateTime.Now;
             Products = new List<Product>();
             Illustrations = new List<Illustration>();
             ProductModelProductDescriptionCultures = new List<ProductModelProductDescriptionCulture>();

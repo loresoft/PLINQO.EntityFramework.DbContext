@@ -16,6 +16,13 @@ namespace Tracker.Data.Entities
     {
         public User()
         {
+            CreatedDate = DateTime.Now;
+            ModifiedDate = DateTime.Now;
+            PasswordHash = "";
+            PasswordSalt = "";
+            IsApproved = true;
+            LastLoginDate = DateTime.Now;
+            LastActivityDate = DateTime.Now;
             Audits = new List<Audit>();
             AssignedTasks = new List<Task>();
             CreatedTasks = new List<Task>();

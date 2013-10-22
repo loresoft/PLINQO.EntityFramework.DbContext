@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public UnitMeasure()
         {
+            ModifiedDate = DateTime.Now;
             BillOfMaterials = new List<BillOfMaterials>();
             SizeProducts = new List<Product>();
             WeightProducts = new List<Product>();

@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public SpecialOfferProduct()
         {
+            ModifiedDate = DateTime.Now;
             SalesOrderDetails = new List<SalesOrderDetail>();
         }
 

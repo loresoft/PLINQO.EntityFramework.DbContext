@@ -9,9 +9,5 @@ namespace Petshop.Data
 {
     public partial class PetshopContext
     {
-        protected void InitializeMapping(DbModelBuilder modelBuilder)
-        {
-
-        }
     }
 }

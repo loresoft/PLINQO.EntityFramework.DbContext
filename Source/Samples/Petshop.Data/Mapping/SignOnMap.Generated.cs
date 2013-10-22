@@ -27,6 +27,7 @@ namespace Petshop.Data.Mapping
             // Properties
             Property(t => t.UserName)
                 .HasColumnName("UserName")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .HasMaxLength(20)
                 .IsRequired();
             Property(t => t.Password)
@@ -40,4 +41,3 @@ namespace Petshop.Data.Mapping
         }
     }
 }
-

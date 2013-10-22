@@ -16,6 +16,8 @@ namespace AdventureWorks.Data.Entities
     {
         public Contact()
         {
+            EmailPromotion = 0;
+            ModifiedDate = DateTime.Now;
             Employees = new List<Employee>();
             VendorContacts = new List<VendorContact>();
             CreditCards = new List<CreditCard>();

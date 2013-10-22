@@ -27,6 +27,7 @@ namespace AdventureWorks.Data.Mapping
             // Properties
             Property(t => t.SalesPersonID)
                 .HasColumnName("SalesPersonID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.TerritoryID)
                 .HasColumnName("TerritoryID")
@@ -60,7 +61,8 @@ namespace AdventureWorks.Data.Mapping
 
             // Relationships
             HasRequired(t => t.Employee)
-                .WithOptional(t => t.SalesPerson)
+                .WithMany(t => t.SalesPeople)
+                .HasForeignKey(d => d.SalesPersonID)
                 .WillCascadeOnDelete(false);
             HasOptional(t => t.SalesTerritory)
                 .WithMany(t => t.SalesPeople)
@@ -71,4 +73,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

@@ -27,6 +27,7 @@ namespace Petshop.Data.Mapping
             // Properties
             Property(t => t.UserId)
                 .HasColumnName("UserId")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .HasMaxLength(20)
                 .IsRequired();
             Property(t => t.Email)
@@ -80,4 +81,3 @@ namespace Petshop.Data.Mapping
         }
     }
 }
-

@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public AWBuildVersion()
         {
+            ModifiedDate = DateTime.Now;
         }
 
         public byte SystemInformationID { get; set; }

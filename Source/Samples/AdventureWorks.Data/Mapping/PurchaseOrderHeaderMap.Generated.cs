@@ -89,4 +89,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

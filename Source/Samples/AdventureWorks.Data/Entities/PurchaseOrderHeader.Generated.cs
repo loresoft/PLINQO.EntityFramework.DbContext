@@ -16,6 +16,13 @@ namespace AdventureWorks.Data.Entities
     {
         public PurchaseOrderHeader()
         {
+            RevisionNumber = 0;
+            Status = 1;
+            OrderDate = DateTime.Now;
+            SubTotal = (System.Decimal)0.00;
+            TaxAmt = (System.Decimal)0.00;
+            Freight = (System.Decimal)0.00;
+            ModifiedDate = DateTime.Now;
             PurchaseOrderDetails = new List<PurchaseOrderDetail>();
         }
 

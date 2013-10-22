@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public CreditCard()
         {
+            ModifiedDate = DateTime.Now;
             Contacts = new List<Contact>();
             SalesOrderHeaders = new List<SalesOrderHeader>();
         }

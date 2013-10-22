@@ -54,4 +54,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

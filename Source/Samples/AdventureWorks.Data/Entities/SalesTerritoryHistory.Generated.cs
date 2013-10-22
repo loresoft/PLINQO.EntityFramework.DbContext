@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public SalesTerritoryHistory()
         {
+            ModifiedDate = DateTime.Now;
         }
 
         public int SalesPersonID { get; set; }

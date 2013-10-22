@@ -29,6 +29,9 @@ namespace Petshop.Data.Entities
         public string Attr3 { get; set; }
         public string Attr4 { get; set; }
         public string Attr5 { get; set; }
+        public System.Byte[] Image { get; set; }
+        public System.Byte[] Image50 { get; set; }
+        public System.Byte[] ImageMax { get; set; }
 
         public virtual Product Product { get; set; }
         public virtual Supplier Supplier1 { get; set; }

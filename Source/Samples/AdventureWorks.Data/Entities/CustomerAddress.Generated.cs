@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public CustomerAddress()
         {
+            ModifiedDate = DateTime.Now;
         }
 
         public int CustomerID { get; set; }

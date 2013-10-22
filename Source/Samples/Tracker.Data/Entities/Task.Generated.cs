@@ -16,7 +16,10 @@ namespace Tracker.Data.Entities
     {
         public Task()
         {
+            CreatedDate = DateTime.Now;
+            ModifiedDate = DateTime.Now;
             Audits = new List<Audit>();
+            TaskExtended = new List<TaskExtended>();
         }
 
         public int Id { get; set; }
@@ -39,6 +42,6 @@ namespace Tracker.Data.Entities
         public virtual Status Status { get; set; }
         public virtual User AssignedUser { get; set; }
         public virtual User CreatedUser { get; set; }
-        public virtual TaskExtended TaskExtended { get; set; }
+        public virtual ICollection<TaskExtended> TaskExtended { get; set; }
     }
 }
