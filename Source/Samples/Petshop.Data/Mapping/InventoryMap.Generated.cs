@@ -27,6 +27,7 @@ namespace Petshop.Data.Mapping
             // Properties
             Property(t => t.ItemId)
                 .HasColumnName("ItemId")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .HasMaxLength(10)
                 .IsRequired();
             Property(t => t.Qty)
@@ -39,4 +40,3 @@ namespace Petshop.Data.Mapping
         }
     }
 }
-

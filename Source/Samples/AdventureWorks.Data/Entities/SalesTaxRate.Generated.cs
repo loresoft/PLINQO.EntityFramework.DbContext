@@ -16,6 +16,8 @@ namespace AdventureWorks.Data.Entities
     {
         public SalesTaxRate()
         {
+            TaxRate = (System.Decimal)0.00;
+            ModifiedDate = DateTime.Now;
         }
 
         public int SalesTaxRateID { get; set; }

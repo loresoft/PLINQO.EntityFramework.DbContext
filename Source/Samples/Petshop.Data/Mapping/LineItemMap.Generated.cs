@@ -27,9 +27,11 @@ namespace Petshop.Data.Mapping
             // Properties
             Property(t => t.OrderId)
                 .HasColumnName("OrderId")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.LineNum)
                 .HasColumnName("LineNum")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.ItemId)
                 .HasColumnName("ItemId")
@@ -53,4 +55,3 @@ namespace Petshop.Data.Mapping
         }
     }
 }
-

@@ -16,6 +16,14 @@ namespace AdventureWorks.Data.Entities
     {
         public SalesOrderHeader()
         {
+            RevisionNumber = 0;
+            OrderDate = DateTime.Now;
+            Status = 1;
+            OnlineOrderFlag = true;
+            SubTotal = (System.Decimal)0.00;
+            TaxAmt = (System.Decimal)0.00;
+            Freight = (System.Decimal)0.00;
+            ModifiedDate = DateTime.Now;
             SalesOrderDetails = new List<SalesOrderDetail>();
             SalesReasons = new List<SalesReason>();
         }

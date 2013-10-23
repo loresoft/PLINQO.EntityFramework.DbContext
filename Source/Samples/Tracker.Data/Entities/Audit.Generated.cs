@@ -16,6 +16,7 @@ namespace Tracker.Data.Entities
     {
         public Audit()
         {
+            CreatedDate = DateTime.Now;
         }
 
         public int Id { get; set; }

@@ -27,6 +27,7 @@ namespace AdventureWorks.Data.Mapping
             // Properties
             Property(t => t.SalesOrderID)
                 .HasColumnName("SalesOrderID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.SalesOrderDetailID)
                 .HasColumnName("SalesOrderDetailID")
@@ -79,4 +80,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

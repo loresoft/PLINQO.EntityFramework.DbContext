@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public JobCandidate()
         {
+            ModifiedDate = DateTime.Now;
         }
 
         public int JobCandidateID { get; set; }

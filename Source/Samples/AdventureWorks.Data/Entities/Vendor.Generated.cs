@@ -16,6 +16,9 @@ namespace AdventureWorks.Data.Entities
     {
         public Vendor()
         {
+            PreferredVendorStatus = true;
+            ActiveFlag = true;
+            ModifiedDate = DateTime.Now;
             ProductVendors = new List<ProductVendor>();
             PurchaseOrderHeaders = new List<PurchaseOrderHeader>();
             VendorAddresses = new List<VendorAddress>();

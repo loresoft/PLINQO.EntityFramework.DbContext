@@ -16,6 +16,8 @@ namespace AdventureWorks.Data.Entities
     {
         public SalesOrderDetail()
         {
+            UnitPriceDiscount = (System.Decimal)0.0;
+            ModifiedDate = DateTime.Now;
         }
 
         public int SalesOrderID { get; set; }

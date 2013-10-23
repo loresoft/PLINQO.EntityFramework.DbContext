@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public EmployeePayHistory()
         {
+            ModifiedDate = DateTime.Now;
         }
 
         public int EmployeeID { get; set; }

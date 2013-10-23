@@ -389,7 +389,7 @@ namespace SchemaMapper
                     property.IsPrimaryKey = columnSchema.IsPrimaryKeyMember;
                     property.IsForeignKey = columnSchema.IsForeignKeyMember;
                     if (columnSchema.IsUnique)
-                        property.IsUnique = columnSchema.IsUnique;
+                        property.IsUnique = true;
                 }
 
                 property.IsProcessed = true;
@@ -432,8 +432,8 @@ namespace SchemaMapper
             bool foreignMembersRequired;
             bool primaryMembersRequired;
 
-            var foreignMembers = GetKeyMembers(foreignEntity, tableKeySchema.ForeignKeyMemberColumns, tableKeySchema.Name, out foreignMembersRequired);
-            var primaryMembers = GetKeyMembers(primaryEntity, tableKeySchema.PrimaryKeyMemberColumns, tableKeySchema.Name, out primaryMembersRequired);
+            List<string> foreignMembers = GetKeyMembers(foreignEntity, tableKeySchema.ForeignKeyMemberColumns, tableKeySchema.Name, out foreignMembersRequired);
+            List<string> primaryMembers = GetKeyMembers(primaryEntity, tableKeySchema.PrimaryKeyMemberColumns, tableKeySchema.Name, out primaryMembersRequired);
 
             Relationship foreignRelationship = foreignEntity.Relationships
               .FirstOrDefault(r => r.RelationshipName == relationshipName && r.IsForeignKey);
@@ -476,16 +476,10 @@ namespace SchemaMapper
             primaryRelationship.OtherProperties = new List<string>(foreignMembers);
             primaryRelationship.CascadeDelete = isCascadeDelete;
 
-            bool isOneToOne = IsOneToOne(tableKeySchema, foreignRelationship);
-
-            if (isOneToOne)
-                primaryRelationship.ThisCardinality = primaryMembersRequired ? Cardinality.One : Cardinality.ZeroOrOne;
-            else
-                primaryRelationship.ThisCardinality = Cardinality.Many;
+            primaryRelationship.ThisCardinality = Cardinality.Many;
 
             string primaryPropertyName = prefix + foreignName;
-            if (!isOneToOne)
-                primaryPropertyName = Settings.RelationshipName(primaryPropertyName);
+            primaryPropertyName = Settings.RelationshipName(primaryPropertyName);
 
             primaryPropertyName = ToPropertyName(primaryEntity.ClassName, primaryPropertyName);
             primaryPropertyName = _namer.UniqueName(primaryEntity.ClassName, primaryPropertyName);

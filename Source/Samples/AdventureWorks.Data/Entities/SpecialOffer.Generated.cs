@@ -16,6 +16,9 @@ namespace AdventureWorks.Data.Entities
     {
         public SpecialOffer()
         {
+            DiscountPct = (System.Decimal)0.00;
+            MinQty = 0;
+            ModifiedDate = DateTime.Now;
             Products = new List<Product>();
         }
 

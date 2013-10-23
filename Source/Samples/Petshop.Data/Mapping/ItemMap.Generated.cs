@@ -27,6 +27,7 @@ namespace Petshop.Data.Mapping
             // Properties
             Property(t => t.ItemId)
                 .HasColumnName("ItemId")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .HasMaxLength(10)
                 .IsRequired();
             Property(t => t.ProductId)
@@ -68,6 +69,16 @@ namespace Petshop.Data.Mapping
                 .HasColumnName("Attr5")
                 .HasMaxLength(80)
                 .IsOptional();
+            Property(t => t.Image)
+                .HasColumnName("Image")
+                .IsOptional();
+            Property(t => t.Image50)
+                .HasColumnName("Image50")
+                .HasMaxLength(50)
+                .IsOptional();
+            Property(t => t.ImageMax)
+                .HasColumnName("ImageMax")
+                .IsOptional();
 
             // Relationships
             HasRequired(t => t.Product)
@@ -83,4 +94,3 @@ namespace Petshop.Data.Mapping
         }
     }
 }
-

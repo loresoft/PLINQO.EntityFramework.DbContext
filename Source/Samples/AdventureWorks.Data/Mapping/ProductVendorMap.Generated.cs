@@ -27,9 +27,11 @@ namespace AdventureWorks.Data.Mapping
             // Properties
             Property(t => t.ProductID)
                 .HasColumnName("ProductID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.VendorID)
                 .HasColumnName("VendorID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.AverageLeadTime)
                 .HasColumnName("AverageLeadTime")
@@ -80,4 +82,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

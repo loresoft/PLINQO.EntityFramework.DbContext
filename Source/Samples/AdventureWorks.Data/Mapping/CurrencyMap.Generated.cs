@@ -27,6 +27,7 @@ namespace AdventureWorks.Data.Mapping
             // Properties
             Property(t => t.CurrencyCode)
                 .HasColumnName("CurrencyCode")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .HasMaxLength(3)
                 .IsRequired();
             Property(t => t.Name)
@@ -43,4 +44,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

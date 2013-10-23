@@ -16,6 +16,8 @@ namespace Tracker.Data.Entities
     {
         public Priority()
         {
+            CreatedDate = DateTime.Now;
+            ModifiedDate = DateTime.Now;
             Tasks = new List<Task>();
         }
 

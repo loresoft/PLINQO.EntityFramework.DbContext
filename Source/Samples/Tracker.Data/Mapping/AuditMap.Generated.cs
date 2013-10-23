@@ -69,4 +69,3 @@ namespace Tracker.Data.Mapping
         }
     }
 }
-

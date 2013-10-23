@@ -27,6 +27,7 @@ namespace AdventureWorks.Data.Mapping
             // Properties
             Property(t => t.CultureID)
                 .HasColumnName("CultureID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .HasMaxLength(6)
                 .IsRequired();
             Property(t => t.Name)
@@ -43,4 +44,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

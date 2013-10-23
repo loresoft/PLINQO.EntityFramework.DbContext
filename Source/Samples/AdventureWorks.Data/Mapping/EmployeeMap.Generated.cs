@@ -94,4 +94,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

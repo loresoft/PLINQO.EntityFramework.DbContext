@@ -16,6 +16,8 @@ namespace AdventureWorks.Data.Entities
     {
         public ProductReview()
         {
+            ReviewDate = DateTime.Now;
+            ModifiedDate = DateTime.Now;
         }
 
         public int ProductReviewID { get; set; }

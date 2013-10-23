@@ -16,6 +16,11 @@ namespace AdventureWorks.Data.Entities
     {
         public SalesTerritory()
         {
+            SalesYTD = (System.Decimal)0.00;
+            SalesLastYear = (System.Decimal)0.00;
+            CostYTD = (System.Decimal)0.00;
+            CostLastYear = (System.Decimal)0.00;
+            ModifiedDate = DateTime.Now;
             StateProvinces = new List<StateProvince>();
             Customers = new List<Customer>();
             SalesOrderHeaders = new List<SalesOrderHeader>();

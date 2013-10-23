@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public Store()
         {
+            ModifiedDate = DateTime.Now;
             StoreContacts = new List<StoreContact>();
         }
 

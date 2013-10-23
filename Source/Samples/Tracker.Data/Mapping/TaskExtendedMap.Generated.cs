@@ -27,6 +27,7 @@ namespace Tracker.Data.Mapping
             // Properties
             Property(t => t.TaskId)
                 .HasColumnName("TaskId")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.Browser)
                 .HasColumnName("Browser")
@@ -51,11 +52,11 @@ namespace Tracker.Data.Mapping
 
             // Relationships
             HasRequired(t => t.Task)
-                .WithOptional(t => t.TaskExtended)
+                .WithMany(t => t.TaskExtended)
+                .HasForeignKey(d => d.TaskId)
                 .WillCascadeOnDelete(false);
 
             InitializeMapping();
         }
     }
 }
-

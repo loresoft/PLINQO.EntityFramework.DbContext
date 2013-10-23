@@ -16,6 +16,9 @@ namespace AdventureWorks.Data.Entities
     {
         public TransactionHistory()
         {
+            ReferenceOrderLineID = 0;
+            TransactionDate = DateTime.Now;
+            ModifiedDate = DateTime.Now;
         }
 
         public int TransactionID { get; set; }

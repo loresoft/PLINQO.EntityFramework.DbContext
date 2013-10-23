@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public ProductSubcategory()
         {
+            ModifiedDate = DateTime.Now;
             Products = new List<Product>();
         }
 

@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public AddressType()
         {
+            ModifiedDate = DateTime.Now;
             VendorAddresses = new List<VendorAddress>();
             CustomerAddresses = new List<CustomerAddress>();
         }

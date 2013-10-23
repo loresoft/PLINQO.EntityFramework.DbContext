@@ -11,10 +11,9 @@
     <language>en-US</language>
     <tags>EntityFramework CodeSmith</tags>
     <dependencies>
-      <dependency id="EntityFramework" version="5.0.0" />
+      <dependency id="EntityFramework" version="6.0.0" />
     </dependencies>
     <frameworkAssemblies>
-      <frameworkAssembly assemblyName="System.Data.Entity" targetFramework="" />
       <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="" />
     </frameworkAssemblies>
   </metadata>

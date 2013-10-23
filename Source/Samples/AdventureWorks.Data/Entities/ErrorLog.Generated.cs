@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public ErrorLog()
         {
+            ErrorTime = DateTime.Now;
         }
 
         public int ErrorLogID { get; set; }

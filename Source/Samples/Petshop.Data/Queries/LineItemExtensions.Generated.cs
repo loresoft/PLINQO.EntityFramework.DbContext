@@ -35,4 +35,3 @@ namespace Petshop.Data.Queries
         }
     }
 }
-

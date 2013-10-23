@@ -16,12 +16,18 @@ namespace AdventureWorks.Data.Entities
     {
         public Employee()
         {
+            SalariedFlag = true;
+            VacationHours = 0;
+            SickLeaveHours = 0;
+            CurrentFlag = true;
+            ModifiedDate = DateTime.Now;
             ManagerEmployees = new List<Employee>();
             address = new List<Address>();
             EmployeeDepartmentHistories = new List<EmployeeDepartmentHistory>();
             EmployeePayHistories = new List<EmployeePayHistory>();
             JobCandidates = new List<JobCandidate>();
             PurchaseOrderHeaders = new List<PurchaseOrderHeader>();
+            SalesPeople = new List<SalesPerson>();
         }
 
         public int EmployeeID { get; set; }
@@ -49,6 +55,6 @@ namespace AdventureWorks.Data.Entities
         public virtual ICollection<EmployeePayHistory> EmployeePayHistories { get; set; }
         public virtual ICollection<JobCandidate> JobCandidates { get; set; }
         public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeaders { get; set; }
-        public virtual SalesPerson SalesPerson { get; set; }
+        public virtual ICollection<SalesPerson> SalesPeople { get; set; }
     }
 }

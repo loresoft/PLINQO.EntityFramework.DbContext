@@ -9,9 +9,5 @@ namespace Tracker.Data
 {
     public partial class TrackerContext
     {
-        protected void InitializeMapping(DbModelBuilder modelBuilder)
-        {
-
-        }
     }
 }

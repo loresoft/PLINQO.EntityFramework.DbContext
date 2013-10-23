@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public WorkOrderRouting()
         {
+            ModifiedDate = DateTime.Now;
         }
 
         public int WorkOrderID { get; set; }

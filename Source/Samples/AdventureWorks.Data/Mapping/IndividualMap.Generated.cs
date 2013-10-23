@@ -27,6 +27,7 @@ namespace AdventureWorks.Data.Mapping
             // Properties
             Property(t => t.CustomerID)
                 .HasColumnName("CustomerID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.ContactID)
                 .HasColumnName("ContactID")
@@ -44,11 +45,11 @@ namespace AdventureWorks.Data.Mapping
                 .HasForeignKey(d => d.ContactID)
                 .WillCascadeOnDelete(false);
             HasRequired(t => t.Customer)
-                .WithOptional(t => t.Individual)
+                .WithMany(t => t.Individuals)
+                .HasForeignKey(d => d.CustomerID)
                 .WillCascadeOnDelete(false);
 
             InitializeMapping();
         }
     }
 }
-

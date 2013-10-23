@@ -16,6 +16,9 @@ namespace AdventureWorks.Data.Entities
     {
         public ShipMethod()
         {
+            ShipBase = (System.Decimal)0.00;
+            ShipRate = (System.Decimal)0.00;
+            ModifiedDate = DateTime.Now;
             PurchaseOrderHeaders = new List<PurchaseOrderHeader>();
             SalesOrderHeaders = new List<SalesOrderHeader>();
         }

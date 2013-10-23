@@ -27,9 +27,11 @@ namespace AdventureWorks.Data.Mapping
             // Properties
             Property(t => t.CustomerID)
                 .HasColumnName("CustomerID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.ContactID)
                 .HasColumnName("ContactID")
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 .IsRequired();
             Property(t => t.ContactTypeID)
                 .HasColumnName("ContactTypeID")
@@ -59,4 +61,3 @@ namespace AdventureWorks.Data.Mapping
         }
     }
 }
-

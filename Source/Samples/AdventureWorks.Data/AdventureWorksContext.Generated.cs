@@ -26,6 +26,8 @@ namespace AdventureWorks.Data
         System.Data.Entity.IDbSet<TEntity> Set<TEntity>() where TEntity : class;
 
         int SaveChanges();
+        System.Threading.Tasks.Task<int> SaveChangesAsync();
+        System.Threading.Tasks.Task<int> SaveChangesAsync(System.Threading.CancellationToken cancellationToken);
     }
 
     public partial interface IAdventureWorksContext : IDbContext
@@ -100,32 +102,39 @@ namespace AdventureWorks.Data
     {
         public AdventureWorksContext()
             :base("Name=AdventureWorksContext")
-        { }
+        {
+            InitializeContext();
+        }
 
         public AdventureWorksContext(System.Data.Entity.Infrastructure.DbCompiledModel model)
             : base("Name=AdventureWorksContext", model)
-        { }
+        {
+            InitializeContext();
+        }
 
         public AdventureWorksContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
-        { }
+        {
+            InitializeContext();
+        }
 
         public AdventureWorksContext(string nameOrConnectionString, System.Data.Entity.Infrastructure.DbCompiledModel model)
             : base(nameOrConnectionString, model)
-        { }
+        {
+            InitializeContext();
+        }
 
         public AdventureWorksContext(System.Data.Common.DbConnection existingConnection, bool contextOwnsConnection)
             : base(existingConnection, contextOwnsConnection)
-        { }
+        {
+            InitializeContext();
+        }
 
         public AdventureWorksContext(System.Data.Common.DbConnection existingConnection, System.Data.Entity.Infrastructure.DbCompiledModel model, bool contextOwnsConnection)
             : base(existingConnection, model, contextOwnsConnection)
-        { }
-
-        public AdventureWorksContext(System.Data.Objects.ObjectContext objectContext, bool dbContextOwnsObjectContext)
-            : base(objectContext, dbContextOwnsObjectContext)
-        { }
-
+        {
+            InitializeContext();
+        }
 
         public System.Data.Entity.IDbSet<AdventureWorks.Data.Entities.AWBuildVersion> AWBuildVersions { get; set; }
         public System.Data.Entity.IDbSet<AdventureWorks.Data.Entities.DatabaseLog> DatabaseLogs { get; set; }
@@ -264,5 +273,8 @@ namespace AdventureWorks.Data
         {
             return base.Set<TEntity>();
         }
+
+        partial void InitializeContext();
+        partial void InitializeMapping(System.Data.Entity.DbModelBuilder modelBuilder);
     }
 }

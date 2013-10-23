@@ -16,6 +16,7 @@ namespace AdventureWorks.Data.Entities
     {
         public Department()
         {
+            ModifiedDate = DateTime.Now;
             EmployeeDepartmentHistories = new List<EmployeeDepartmentHistory>();
         }
 
