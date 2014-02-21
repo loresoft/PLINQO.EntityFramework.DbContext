@@ -344,6 +344,13 @@ namespace SchemaMapper
                     continue;
                 }
 
+                if (Settings.IsIgnored(dataObjectBase.FullName))
+                {
+                    Debug.WriteLine("Skipping Column: " + dataObjectBase.FullName);
+                    continue;
+                }
+
+
                 Property property = entity.Properties.ByColumn(dataObjectBase.Name);
 
                 if (property == null)
@@ -476,10 +483,15 @@ namespace SchemaMapper
             primaryRelationship.OtherProperties = new List<string>(foreignMembers);
             primaryRelationship.CascadeDelete = isCascadeDelete;
 
-            primaryRelationship.ThisCardinality = Cardinality.Many;
+            bool isOneToOne = IsOneToOne(tableKeySchema, foreignRelationship);
+            if (isOneToOne)
+                primaryRelationship.ThisCardinality = primaryMembersRequired ? Cardinality.One : Cardinality.ZeroOrOne;
+            else
+                primaryRelationship.ThisCardinality = Cardinality.Many;
 
             string primaryPropertyName = prefix + foreignName;
-            primaryPropertyName = Settings.RelationshipName(primaryPropertyName);
+            if (!isOneToOne)
+                primaryPropertyName = Settings.RelationshipName(primaryPropertyName);
 
             primaryPropertyName = ToPropertyName(primaryEntity.ClassName, primaryPropertyName);
             primaryPropertyName = _namer.UniqueName(primaryEntity.ClassName, primaryPropertyName);
@@ -700,8 +712,10 @@ namespace SchemaMapper
             if (isFkeyPkey)
                 return true;
 
+            return false;
+
             // if f.key is unique
-            return tableKeySchema.ForeignKeyMemberColumns.All(column => column.IsUnique);
+            //return tableKeySchema.ForeignKeyMemberColumns.All(column => column.IsUnique);
         }
 
         private static bool IsManyToMany(TableSchema tableSchema)

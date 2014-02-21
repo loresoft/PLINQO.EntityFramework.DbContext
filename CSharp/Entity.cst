@@ -286,7 +286,6 @@ Generating Entities ...
         
         this.RegisterReference("System.Configuration");
         this.RegisterReference("System.Data");
-        this.RegisterReference("System.Data.Entity");
         this.RegisterReference("System.Runtime.Serialization");
         this.RegisterReference("EntityFramework");
 
