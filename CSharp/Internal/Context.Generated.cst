@@ -65,27 +65,18 @@ namespace <%= ContextNamespace %>
     public partial class <%= ContextClassName.ToSafeName() %>
         : System.Data.Entity.DbContext<%= InterfaceMode ? ", I" + ContextClassName.ToSafeName() : string.Empty %>
     {
-<<<<<<< HEAD
+ 
         public <%= ContextClassName.ToSafeName() %>()
-            :base("Name=<%= ContextClassName.ToSafeName() %>")
-        { }
-
-        public <%= ContextClassName.ToSafeName() %>(System.Data.Entity.Infrastructure.DbCompiledModel model)
-            : base("Name=<%= ContextClassName.ToSafeName() %>", model)
-        { }
-=======
-        public <%= EntityContext.ClassName.ToSafeName() %>()
             :base("Name=<%= EntityContext.ClassName.ToSafeName() %>")
         {
             InitializeContext();
         }
 
-        public <%= EntityContext.ClassName.ToSafeName() %>(System.Data.Entity.Infrastructure.DbCompiledModel model)
+        public <%= ContextClassName.ToSafeName() %>(System.Data.Entity.Infrastructure.DbCompiledModel model)
             : base("Name=<%= EntityContext.ClassName.ToSafeName() %>", model)
         {
             InitializeContext();
         }
->>>>>>> upstream/master
 
         public <%= ContextClassName.ToSafeName() %>(string nameOrConnectionString)
             : base(nameOrConnectionString)
@@ -107,18 +98,10 @@ namespace <%= ContextNamespace %>
 
         public <%= ContextClassName.ToSafeName() %>(System.Data.Common.DbConnection existingConnection, System.Data.Entity.Infrastructure.DbCompiledModel model, bool contextOwnsConnection)
             : base(existingConnection, model, contextOwnsConnection)
-<<<<<<< HEAD
-        { }
-
-        public <%= ContextClassName.ToSafeName() %>(System.Data.Objects.ObjectContext objectContext, bool dbContextOwnsObjectContext)
-            : base(objectContext, dbContextOwnsObjectContext)
-        { }
-
-=======
         {
             InitializeContext();
         }
->>>>>>> upstream/master
+
 
 <% foreach(var p in EntityContext.Entities) { %>
         public System.Data.Entity.<%= InterfaceMode ? "I" : "" %>DbSet<<%= EntityNamespace %>.<%= p.ClassName.ToSafeName() %>> <%= p.ContextName.ToSafeName() %> { get; set; }
