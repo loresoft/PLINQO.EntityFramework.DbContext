@@ -93,8 +93,10 @@ public string PropertyExpression(Property property)
     sb.Append(".HasColumnName(\"");
     sb.Append(property.ColumnName);
     sb.Append("\")");
-
-    if (property.IsIdentity == true)
+    
+    if (property.IsIdentity == true || 
+        property.Default.Contains("newsequentialid") || 
+        property.Default.Contains("newid"))
     {
       sb.AppendLine();
       sb.Append(' ', 4 * 4);

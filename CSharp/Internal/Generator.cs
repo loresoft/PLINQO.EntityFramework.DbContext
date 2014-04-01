@@ -344,13 +344,6 @@ namespace SchemaMapper
                     continue;
                 }
 
-                if (Settings.IsIgnored(dataObjectBase.FullName))
-                {
-                    Debug.WriteLine("Skipping Column: " + dataObjectBase.FullName);
-                    continue;
-                }
-
-
                 Property property = entity.Properties.ByColumn(dataObjectBase.Name);
 
                 if (property == null)

@@ -84,12 +84,15 @@
              Default="Plural"
              Description="Tell generator how the context properties are to be named." %>             
 
-
 <%@ Property Name="ContextClassName"
              Type="String"
              Category="4.Hints"
              Description="Tell generator how the context class is to be named." %>             
 
+<%@ Property Name="ContextConnectionName"
+             Type="String"
+             Category="4.Hints"
+             Description="Tell generator how the connection string is to be named." %>             
 
 <%@ Property Name="IgnoreList"
              Type="CodeSmith.CustomProperties.StringCollection"
@@ -128,8 +131,6 @@
              Default=""
              Optional="True"
              Description="Name value pair for custom renaming. Name is orginal name, Value is new name." %>
-
-
 
 <%@ Property Name="IncludeQuery"
              Type="Boolean"
