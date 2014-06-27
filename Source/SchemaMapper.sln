@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchemaMapper", "SchemaMapper\SchemaMapper.csproj", "{B1729527-5608-4E98-9A3B-C76AE9DFC1F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchemaMapper.Tests", "SchemaMapper.Tests\SchemaMapper.Tests.csproj", "{9237C0C0-D586-49D1-AB12-C20F29B8A256}"
@@ -36,9 +38,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracker.Data", "Samples\Tracker.Data\Tracker.Data.csproj", "{CF7E6F25-7E92-45E3-B6DD-55C9BDFA600A}"
 EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = SchemaMapper.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -72,5 +71,8 @@ Global
 		{5BC06EAA-1207-4BC4-8F4E-80A2AABE550A} = {687F8B44-042A-4DCB-85A2-E9005FD94FA2}
 		{3C043248-B883-4F7B-AE10-248D981EA655} = {687F8B44-042A-4DCB-85A2-E9005FD94FA2}
 		{CF7E6F25-7E92-45E3-B6DD-55C9BDFA600A} = {687F8B44-042A-4DCB-85A2-E9005FD94FA2}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = SchemaMapper.vsmdi
 	EndGlobalSection
 EndGlobal
