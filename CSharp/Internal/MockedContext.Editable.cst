@@ -11,6 +11,7 @@
 <%@ Import Namespace="SchemaMapper" %>
 
 <%@ Property Name="EntityContext" Type="SchemaMapper.EntityContext"  %>
+<%@ Property Name="ContextClassName" Type="System.String"  %>
 
 <%@ Property Name="MockNamespace" Type="System.String"  %>
 <%@ Property Name="ContextNamespace" Type="System.String"  %>
@@ -28,7 +29,7 @@ using <%= EntityNamespace %>;
 
 namespace <%= MockNamespace %>
 {
-    <%= Internalize ? "internal" : "public" %> partial class Fake<%= EntityContext.ClassName.ToSafeName() %>
+    <%= Internalize ? "internal" : "public" %> partial class Fake<%= ContextClassName.ToSafeName() %>
     {
     }
     

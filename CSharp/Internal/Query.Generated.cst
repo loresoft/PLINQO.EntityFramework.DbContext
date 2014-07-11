@@ -46,6 +46,7 @@ string safeName = EntityNamespace + "." + Entity.ClassName.ToSafeName();
 
 namespace <%= QueryNamespace %>
 {
+    [System.CodeDom.Compiler.GeneratedCode("CodeSmith", "6.0.0.0")]
     public static partial class <%= Entity.ClassName.ToSafeName() %>Extensions
     {
 <% foreach(var method in Entity.Methods) { %>

@@ -29,6 +29,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace <%= MappingNamespace %>
 {
+    [System.CodeDom.Compiler.GeneratedCode("CodeSmith", "6.0.0.0")]
     public partial class <%= Entity.MappingName.ToSafeName() %>
         : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<<%= EntityNamespace %>.<%= Entity.ClassName.ToSafeName() %>>
     {
@@ -92,8 +93,10 @@ public string PropertyExpression(Property property)
     sb.Append(".HasColumnName(\"");
     sb.Append(property.ColumnName);
     sb.Append("\")");
-
-    if (property.IsIdentity == true)
+    
+    if (property.IsIdentity == true || 
+        property.Default.Contains("newsequentialid") || 
+        property.Default.Contains("newid"))
     {
       sb.AppendLine();
       sb.Append(' ', 4 * 4);
