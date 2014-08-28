@@ -46,6 +46,7 @@ namespace SchemaMapper
             TableNaming = TableNaming.Singular;
             CleanExpressions = new List<string> { @"^\d+" };
             IgnoreExpressions = new List<string>();
+            IgnoreColumns = new List<string>();
             RenameRules = new Dictionary<string, string>();
         }
 
@@ -58,6 +59,8 @@ namespace SchemaMapper
         public ContextNaming ContextNaming { get; set; }
 
         public List<string> IgnoreExpressions { get; set; }
+
+        public List<string> IgnoreColumns { get; set; }
 
         public List<string> CleanExpressions { get; set; }
 
@@ -76,6 +79,17 @@ namespace SchemaMapper
 
             return InclusionMode ? !isMatch : isMatch;
         }
+
+        public bool IsColumnIgnored(string name)
+        {
+            if (IgnoreColumns.Count == 0)
+                return false;
+
+            bool isMatch = IgnoreColumns.Any(regex => Regex.IsMatch(name, regex, RegexOptions.IgnoreCase));
+
+            return isMatch;
+        }
+
 
         public string CleanName(string name)
         {
@@ -341,6 +355,13 @@ namespace SchemaMapper
                     Debug.WriteLine("Skipping column '{0}' because it has an unsupported db type '{1}'.",
                         dataObjectBase.Name, dataObjectBase.NativeType);
 
+                    continue;
+                }
+
+                // skip columns
+                if (Settings.IsColumnIgnored(dataObjectBase.FullName))
+                {
+                    Debug.WriteLine("Skipping Column: " + dataObjectBase.FullName);
                     continue;
                 }
 

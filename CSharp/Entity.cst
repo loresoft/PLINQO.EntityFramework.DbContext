@@ -90,6 +90,12 @@
              Default="sysdiagrams$"
              Optional="True"
              Description="List of regular expressions to ignore tables, views and commands when generating mapping." %>
+<%@ Property Name="IgnoreColumns"
+             Type="CodeSmith.CustomProperties.StringCollection"
+             Category="5.Customization"
+             Default=""
+             Optional="True"
+             Description="List of regular expressions to ignore columns when generating mapping." %>
 <%@ Property Name="InclusionMode"
              Type="Boolean"
              Category="5.Customization"
@@ -249,6 +255,11 @@ Generating Entities ...
             foreach(string s in IgnoreList)
               if (!string.IsNullOrEmpty(s))
                 generator.Settings.IgnoreExpressions.Add(s);
+
+        if (IgnoreColumns != null)
+            foreach(string s in IgnoreColumns)
+              if (!string.IsNullOrEmpty(s))
+                generator.Settings.IgnoreColumns.Add(s);
 
         if (CleanExpressions != null)
             foreach(string s in CleanExpressions)
