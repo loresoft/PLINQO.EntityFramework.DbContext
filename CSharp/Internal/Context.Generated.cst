@@ -13,6 +13,7 @@
 <%@ Property Name="EntityContext" Type="SchemaMapper.EntityContext"  %>
 
 <%@ Property Name="ContextNamespace" Type="System.String"  %>
+<%@ Property Name="ContextBaseClass" Type="System.String" Default="System.Data.Entity.DbContext" Optional="True"  %>
 <%@ Property Name="EntityNamespace" Type="System.String"  %>
 <%@ Property Name="MappingNamespace" Type="System.String"  %>
 <%@ Property Name="InterfaceMode" Type="Boolean" Default="False" Optional="True" %>
@@ -59,7 +60,7 @@ namespace <%= ContextNamespace %>
 
 <% } // if interface %>
     public partial class <%= EntityContext.ClassName.ToSafeName() %>
-        : System.Data.Entity.DbContext<%= InterfaceMode ? ", I" + EntityContext.ClassName.ToSafeName() : string.Empty %>
+        : <%= ContextBaseClass %><%= InterfaceMode ? ", I" + EntityContext.ClassName.ToSafeName() : string.Empty %>
     {
         public <%= EntityContext.ClassName.ToSafeName() %>()
             :base("Name=<%= EntityContext.ClassName.ToSafeName() %>")

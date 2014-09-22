@@ -120,6 +120,12 @@
              Default="False"
              Optional="True"
              Description="Include views as entities." %>
+<%@ Property Name="ContextBaseClass" 
+             Type="System.String" 
+             Category="5.Customization"
+             Default="System.Data.Entity.DbContext" 
+             Optional="True" 
+             Description="Base class for DbContext file."%>
              
 <%@ Property Name="RenameMapping"
              Type="CodeSmith.CustomProperties.NameValueCollection"
