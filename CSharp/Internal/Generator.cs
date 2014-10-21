@@ -45,8 +45,8 @@ namespace SchemaMapper
             EntityNaming = EntityNaming.Singular;
             TableNaming = TableNaming.Singular;
             CleanExpressions = new List<string> { @"^\d+" };
-            IgnoreExpressions = new List<string>();
-            IgnoreColumns = new List<string>();
+            //IgnoreExpressions = new List<string>();
+            //IgnoreColumns = new List<string>();
             RenameRules = new Dictionary<string, string>();
         }
 
@@ -58,9 +58,9 @@ namespace SchemaMapper
 
         public ContextNaming ContextNaming { get; set; }
 
-        public List<string> IgnoreExpressions { get; set; }
+        //public List<string> IgnoreExpressions { get; set; }
 
-        public List<string> IgnoreColumns { get; set; }
+        //public List<string> IgnoreColumns { get; set; }
 
         public List<string> CleanExpressions { get; set; }
 
@@ -68,26 +68,28 @@ namespace SchemaMapper
 
         public bool IncludeViews { get; set; }
 
-        public bool InclusionMode { get; set; }
+        //public bool InclusionMode { get; set; }
 
         public bool IsIgnored(string name)
         {
-            if (IgnoreExpressions.Count == 0)
-                return false;
+            //if (IgnoreExpressions.Count == 0)
+            //    return false;
 
-            bool isMatch = IgnoreExpressions.Any(regex => Regex.IsMatch(name, regex));
+            //bool isMatch = IgnoreExpressions.Any(regex => Regex.IsMatch(name, regex));
 
-            return InclusionMode ? !isMatch : isMatch;
+            //return InclusionMode ? !isMatch : isMatch;
+            return false;
         }
 
         public bool IsColumnIgnored(string name)
         {
-            if (IgnoreColumns.Count == 0)
-                return false;
+            //if (IgnoreColumns.Count == 0)
+            //    return false;
 
-            bool isMatch = IgnoreColumns.Any(regex => Regex.IsMatch(name, regex, RegexOptions.IgnoreCase));
+            //bool isMatch = IgnoreColumns.Any(regex => Regex.IsMatch(name, regex, RegexOptions.IgnoreCase));
 
-            return isMatch;
+            //return isMatch;
+            return false;
         }
 
 
@@ -226,15 +228,12 @@ namespace SchemaMapper
             get { return _settings; }
         }
 
-        public EntityContext Generate(DatabaseSchema databaseSchema)
+        public EntityContext Generate(SchemaSelector databaseSchema)
         {
-            // only DeepLoad when in ignore mode
-            databaseSchema.DeepLoad = true;
-
             var entityContext = new EntityContext();
-            entityContext.DatabaseName = databaseSchema.Name;
+            entityContext.DatabaseName = databaseSchema.Database.Name;
 
-            string dataContextName = StringUtil.ToPascalCase(databaseSchema.Name) + "Context";
+            string dataContextName = StringUtil.ToPascalCase(entityContext.DatabaseName) + "Context";
             dataContextName = _namer.UniqueClassName(dataContextName);
 
             entityContext.ClassName = dataContextName;

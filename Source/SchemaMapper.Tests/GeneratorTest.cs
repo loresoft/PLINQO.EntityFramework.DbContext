@@ -18,8 +18,9 @@ namespace SchemaMapper.Tests
             DatabaseSchema databaseSchema = GetDatabaseSchema("Tracker");
             Assert.IsNotNull(databaseSchema);
 
+            var selector = new SchemaSelector { Database = databaseSchema };
             var generator = new Generator();
-            EntityContext entityContext = generator.Generate(databaseSchema);
+            EntityContext entityContext = generator.Generate(selector);
 
             Assert.IsNotNull(entityContext);
 
@@ -36,8 +37,9 @@ namespace SchemaMapper.Tests
             DatabaseSchema databaseSchema = GetDatabaseSchema("Ugly");
             Assert.IsNotNull(databaseSchema);
 
+            var selector = new SchemaSelector { Database = databaseSchema };
             var generator = new Generator();
-            EntityContext entityContext = generator.Generate(databaseSchema);
+            EntityContext entityContext = generator.Generate(selector);
 
             Assert.IsNotNull(entityContext);
 
@@ -54,8 +56,9 @@ namespace SchemaMapper.Tests
             DatabaseSchema databaseSchema = GetDatabaseSchema("Petshop");
             Assert.IsNotNull(databaseSchema);
 
+            var selector = new SchemaSelector { Database = databaseSchema };
             var generator = new Generator();
-            EntityContext entityContext = generator.Generate(databaseSchema);
+            EntityContext entityContext = generator.Generate(selector);
 
             Assert.IsNotNull(entityContext);
 
@@ -73,23 +76,25 @@ namespace SchemaMapper.Tests
             DatabaseSchema databaseSchema = GetDatabaseSchema("Petshop");
             Assert.IsNotNull(databaseSchema);
 
+            var selector = new SchemaSelector { Database = databaseSchema };
+
             var generator = new Generator();
             generator.Settings.TableNaming = TableNaming.Singular;
             generator.Settings.EntityNaming = EntityNaming.Singular;
             generator.Settings.RelationshipNaming = RelationshipNaming.Plural;
             generator.Settings.ContextNaming = ContextNaming.Plural;
-            generator.Settings.InclusionMode = true;
+            //generator.Settings.InclusionMode = true;
 
-            var ignoreList = new List<string>
-            {
-                "dbo.Account",
-                "dbo.Product",
-                "dbo.Category"
-            };
+            //var ignoreList = new List<string>
+            //{
+            //    "dbo.Account",
+            //    "dbo.Product",
+            //    "dbo.Category"
+            //};
 
-            foreach (string s in ignoreList)
-                if (!string.IsNullOrEmpty(s))
-                    generator.Settings.IgnoreExpressions.Add(s);
+            //foreach (string s in ignoreList)
+            //    if (!string.IsNullOrEmpty(s))
+            //        generator.Settings.IgnoreExpressions.Add(s);
 
             var cleanExpressions = new List<string>
             {
@@ -101,7 +106,7 @@ namespace SchemaMapper.Tests
                     generator.Settings.CleanExpressions.Add(s);
 
 
-            EntityContext entityContext = generator.Generate(databaseSchema);
+            EntityContext entityContext = generator.Generate(selector);
 
             Assert.IsNotNull(entityContext);
 
@@ -117,7 +122,7 @@ namespace SchemaMapper.Tests
             var db = DatabaseSchemaSerializer.GetDatabaseSchemaFromName(name);
             db.Database.DeepLoad = true;
 
-            return db;
+            return db as DatabaseSchema;
         }
 
     }

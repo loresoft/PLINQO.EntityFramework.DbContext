@@ -22,7 +22,7 @@
 <%@ Import Namespace="SchemaMapper" %>
 
 <%@ Property Name="SourceDatabase"
-             Type="SchemaExplorer.DatabaseSchema"
+             Type="SchemaExplorer.SchemaSelector"
              Category="1.Database"
              OnChanged="OnSourceDatabaseChanged"
              Description="The source database." %>
@@ -84,24 +84,6 @@
              Default="Plural"
              Description="Tell generator how the context properties are to be named." %>
 
-<%@ Property Name="IgnoreList"
-             Type="CodeSmith.CustomProperties.StringCollection"
-             Category="5.Customization"
-             Default="sysdiagrams$"
-             Optional="True"
-             Description="List of regular expressions to ignore tables, views and commands when generating mapping." %>
-<%@ Property Name="IgnoreColumns"
-             Type="CodeSmith.CustomProperties.StringCollection"
-             Category="5.Customization"
-             Default=""
-             Optional="True"
-             Description="List of regular expressions to ignore columns when generating mapping." %>
-<%@ Property Name="InclusionMode"
-             Type="Boolean"
-             Category="5.Customization"
-             Default="False"
-             Optional="True"
-             Description="Change the IgnoreList to be a list of table to include instead of ignore." %>
 <%@ Property Name="CleanExpressions"
              Type="CodeSmith.CustomProperties.StringCollection"
              Category="5.Customization"
@@ -255,6 +237,8 @@ Generating Entities ...
         generator.Settings.ContextNaming = ContextNaming;
         
         generator.Settings.IncludeViews = IncludeViews;
+
+        /*
         generator.Settings.InclusionMode = InclusionMode;
         
         if (IgnoreList != null)
@@ -266,7 +250,8 @@ Generating Entities ...
             foreach(string s in IgnoreColumns)
               if (!string.IsNullOrEmpty(s))
                 generator.Settings.IgnoreColumns.Add(s);
-
+        */
+        
         if (CleanExpressions != null)
             foreach(string s in CleanExpressions)
               if (!string.IsNullOrEmpty(s))
