@@ -16,10 +16,9 @@ namespace SchemaMapper.Tests
         [TestMethod]
         public void RenameEntity()
         {
-            DatabaseSchema databaseSchema = GetDatabaseSchema("Tracker");
-            Assert.IsNotNull(databaseSchema);
+            var selector = GetDatabaseSchema("Tracker");
+            Assert.IsNotNull(selector);
 
-            var selector = new SchemaSelector { Database = databaseSchema };
             var generator = new Generator();
             EntityContext entityContext = generator.Generate(selector);
 
@@ -40,10 +39,8 @@ namespace SchemaMapper.Tests
         [TestMethod]
         public void RenameProperty()
         {
-            DatabaseSchema databaseSchema = GetDatabaseSchema("Tracker");
-            Assert.IsNotNull(databaseSchema);
-
-            var selector = new SchemaSelector { Database = databaseSchema };
+            var selector = GetDatabaseSchema("Tracker");
+            Assert.IsNotNull(selector);
             var generator = new Generator();
             EntityContext entityContext = generator.Generate(selector);
 
@@ -62,12 +59,14 @@ namespace SchemaMapper.Tests
         }
 
 
-        private DatabaseSchema GetDatabaseSchema(string name)
+        private SchemaSelector GetDatabaseSchema(string name)
         {
-            var db = DatabaseSchemaSerializer.GetDatabaseSchemaFromName(name);
-            db.Database.DeepLoad = true;
+            var databaseSchema = DatabaseSchemaSerializer.GetDatabaseSchemaFromName(name);            
+            
+            var selector = new SchemaSelector(databaseSchema.Provider, databaseSchema.ConnectionString);
+            selector.Database.DeepLoad = true;
 
-            return db as DatabaseSchema;
+            return selector;
         }
 
     }

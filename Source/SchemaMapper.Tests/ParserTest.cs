@@ -51,16 +51,15 @@ namespace SchemaMapper.Tests
         [TestMethod]
         public void ParseTracker()
         {
-            DatabaseSchema databaseSchema = GetDatabaseSchema("Tracker");
-            Assert.IsNotNull(databaseSchema);
-
             var generator = new Generator();
             generator.Settings.ContextNaming = ContextNaming.Preserve;
             generator.Settings.EntityNaming = EntityNaming.Singular;
             generator.Settings.RelationshipNaming = RelationshipNaming.ListSuffix;
             generator.Settings.TableNaming = TableNaming.Singular;
 
-            var selector = new SchemaSelector { Database = databaseSchema };
+            var selector = GetDatabaseSchema("Tracker");
+            Assert.IsNotNull(selector);
+
             EntityContext entityContext = generator.Generate(selector);
 
             Assert.IsNotNull(entityContext);
@@ -80,12 +79,14 @@ namespace SchemaMapper.Tests
                 serializer.Serialize(writer, entityContext);
         }
 
-        private DatabaseSchema GetDatabaseSchema(string name)
+        private SchemaSelector GetDatabaseSchema(string name)
         {
-            var db = DatabaseSchemaSerializer.GetDatabaseSchemaFromName(name);
-            db.Database.DeepLoad = true;
+            var databaseSchema = DatabaseSchemaSerializer.GetDatabaseSchemaFromName(name);            
+            
+            var selector = new SchemaSelector(databaseSchema.Provider, databaseSchema.ConnectionString);
+            selector.Database.DeepLoad = true;
 
-            return db as DatabaseSchema;
+            return selector;
         }
 
     }
