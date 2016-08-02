@@ -1,17 +1,18 @@
+using System;
 using System.Xml;
 using System.Xml.Serialization;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using SchemaExplorer;
 using SchemaExplorer.Serialization;
 
 namespace SchemaMapper.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class ParserTest
     {
         public TestContext TestContext { get; set; }
 
-        [TestMethod]
+        [Test]
         public void ParseContext()
         {
             string contextFile = @"..\..\..\Tracker.Core\TrackerContext.Generated.cs";
@@ -20,7 +21,7 @@ namespace SchemaMapper.Tests
             Assert.IsNotNull(result);
         }
 
-        [TestMethod]
+        [Test]
         public void ParseMapping()
         {
             string mappingFile = @"..\..\..\Tracker.Core\Mapping\TaskMap.Generated.cs";
@@ -29,7 +30,7 @@ namespace SchemaMapper.Tests
             Assert.IsNotNull(result);
         }
 
-        [TestMethod]
+        [Test]
         public void ParseManyToManyMapping()
         {
             string mappingFile = @"..\..\..\Tracker.Core\Mapping\RoleMap.Generated.cs";
@@ -38,7 +39,7 @@ namespace SchemaMapper.Tests
             Assert.IsNotNull(result);
         }
 
-        [TestMethod]
+        [Test]
         public void ParseTwoForeignKeyMapping()
         {
             string mappingFile = @"..\..\..\Ugly.Data\Mapping\TwoForeignKeyMap.Generated.cs";
@@ -48,7 +49,7 @@ namespace SchemaMapper.Tests
         }
 
 
-        [TestMethod]
+        [Test]
         public void ParseTracker()
         {
             var generator = new Generator();

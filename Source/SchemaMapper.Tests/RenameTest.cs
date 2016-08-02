@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using SchemaExplorer;
 using SchemaExplorer.Serialization;
 
 namespace SchemaMapper.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class RenameTest
     {
-        [TestMethod]
+        [Test]
         public void RenameEntity()
         {
             var selector = GetDatabaseSchema("Tracker");
@@ -36,7 +33,7 @@ namespace SchemaMapper.Tests
                 serializer.Serialize(writer, entityContext);
         }
 
-        [TestMethod]
+        [Test]
         public void RenameProperty()
         {
             var selector = GetDatabaseSchema("Tracker");

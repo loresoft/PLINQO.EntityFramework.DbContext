@@ -1,15 +1,13 @@
-﻿using SchemaMapper;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
+using NUnit.Framework;
 
 namespace SchemaMapper.Tests
 {
-  [TestClass]
+  [TestFixture]
   public class ExtensionsTest
   {
-    public TestContext TestContext { get; set; }
 
-    [TestMethod]
+    [Test]
     public void IsCSharpKeywordTest()
     {
       bool actual;
@@ -30,7 +28,7 @@ namespace SchemaMapper.Tests
       Assert.IsTrue(actual);
     }
 
-    [TestMethod]
+    [Test]
     public void IsVisualBasicKeywordTest()
     {
       bool actual;
@@ -48,7 +46,7 @@ namespace SchemaMapper.Tests
       Assert.IsTrue(actual);
     }
 
-    [TestMethod]
+    [Test]
     public void ToNullableTypeTest()
     {
       var int64Type = typeof (Int64);
@@ -75,7 +73,7 @@ namespace SchemaMapper.Tests
 
     }
 
-    [TestMethod]
+    [Test]
     public void UniqueNamerTest()
     {
       var namer = new UniqueNamer();

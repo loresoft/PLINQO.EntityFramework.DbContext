@@ -1,21 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using NUnit.Framework;
 using SchemaExplorer;
 using SchemaExplorer.Serialization;
 using Formatting = Newtonsoft.Json.Formatting;
 
 namespace SchemaMapper.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class GeneratorTest
     {
         public TestContext TestContext { get; set; }
 
-        [TestMethod]
+        [Test]
         public void GenerateTrackerDatabaseTest()
         {
             var selector = GetDatabaseSchema("Tracker");
@@ -32,7 +33,7 @@ namespace SchemaMapper.Tests
                 serializer.Serialize(writer, entityContext);
         }
 
-        [TestMethod]
+        [Test]
         public void GenerateUglyDatabaseTest()
         {
             var selector = GetDatabaseSchema("Ugly");
@@ -50,7 +51,7 @@ namespace SchemaMapper.Tests
                 serializer.Serialize(writer, entityContext);
         }
 
-        [TestMethod]
+        [Test]
         public void GeneratePetshopDatabaseTest()
         {
             var selector = GetDatabaseSchema("Petshop");
@@ -69,7 +70,7 @@ namespace SchemaMapper.Tests
         }
 
 
-        [TestMethod]
+        [Test]
         public void GeneratePetshopInclusionModeTest()
         {
             var selector = GetDatabaseSchema("Petshop");
@@ -107,49 +108,6 @@ namespace SchemaMapper.Tests
 
             string json = JsonConvert.SerializeObject(entityContext, Formatting.Indented);
             File.WriteAllText(@"..\..\PetshopInclusion.json", json);
-        }
-
-        [TestMethod]
-        public void GenerateConnexInclusionModeTest()
-        {
-            var selector = GetDatabaseSchema("Connex");
-            Assert.IsNotNull(selector);
-
-            selector.SelectMode = SelectMode.Include;
-            selector.SelectedTables.Add("dbo.Agency");
-            selector.SelectedTables.Add("dbo.Client");
-            selector.SelectedTables.Add("dbo.Contact");
-            selector.SelectedTables.Add("dbo.Contract");
-            selector.SelectedTables.Add("dbo.MediaSupplier");
-            selector.SelectedTables.Add("dbo.Vendor");
-
-
-            selector.ColumnExpressions.Add(@"\.Id$");
-            selector.ColumnExpressions.Add(@"\.Name$");
-            selector.ColumnExpressions.Add(@"UniversalId$");
-
-            var generator = new Generator();
-            generator.Settings.TableNaming = TableNaming.Singular;
-            generator.Settings.EntityNaming = EntityNaming.Singular;
-            generator.Settings.RelationshipNaming = RelationshipNaming.Plural;
-            generator.Settings.ContextNaming = ContextNaming.Plural;
-
-            var cleanExpressions = new List<string>
-            {
-                "^(sp|tbl|udf|vw)_"
-            };
-
-            foreach (string s in cleanExpressions)
-                if (!string.IsNullOrEmpty(s))
-                    generator.Settings.CleanExpressions.Add(s);
-
-
-            EntityContext entityContext = generator.Generate(selector);
-
-            Assert.IsNotNull(entityContext);
-
-            string json = JsonConvert.SerializeObject(entityContext, Formatting.Indented);
-            File.WriteAllText(@"..\..\Connex.json", json);
         }
 
         private SchemaSelector GetDatabaseSchema(string name)

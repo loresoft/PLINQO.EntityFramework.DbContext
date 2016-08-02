@@ -69,16 +69,6 @@ namespace Petshop.Data.Mapping
                 .HasColumnName("Attr5")
                 .HasMaxLength(80)
                 .IsOptional();
-            Property(t => t.Image)
-                .HasColumnName("Image")
-                .IsOptional();
-            Property(t => t.Image50)
-                .HasColumnName("Image50")
-                .HasMaxLength(50)
-                .IsOptional();
-            Property(t => t.ImageMax)
-                .HasColumnName("ImageMax")
-                .IsOptional();
 
             // Relationships
             HasRequired(t => t.Product)

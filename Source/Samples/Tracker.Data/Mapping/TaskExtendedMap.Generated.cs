@@ -52,8 +52,7 @@ namespace Tracker.Data.Mapping
 
             // Relationships
             HasRequired(t => t.Task)
-                .WithMany(t => t.TaskExtended)
-                .HasForeignKey(d => d.TaskId)
+                .WithOptional(t => t.TaskExtended)
                 .WillCascadeOnDelete(false);
 
             InitializeMapping();
